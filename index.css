@@ -10,7 +10,10 @@
   --color-bg-body: #f5f5f5;
   --color-bg-card: #ffffff;
   --color-border: #d0dff5;
-
+  --color-btn-bg: #f0f4f9;
+  --color-btn-hover: #e2ebf6;
+  --color-btn-text: #555555;
+  --color-btn-border: #d0dff5;
   /* Typography */
   --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-size-base: 15px;
@@ -20,6 +23,22 @@
   --container-width: 820px;
   --border-radius: 6px;
   --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+  --color-primary: #59a5ff;
+  --color-primary-light: #1a365d;
+  --color-text-main: #e0e0e0;
+  --color-text-muted: #b0b0b0;
+  --color-text-light: #888888;
+  --color-text-lighter: #666666;
+  --color-bg-body: #121212;
+  --color-bg-card: #1e1e1e;
+  --color-border: #2c3e50;
+  --color-btn-bg: #2a2a2a;
+  --color-btn-hover: #3a3a3a;
+  --color-btn-text: #aaaaaa;
+  --color-btn-border: #444444;
 }
 
 /* ─── RESET & BASE STYLES ─── */
@@ -267,10 +286,10 @@ section {
 .lang-selector {
   display: flex;
   gap: 0.3rem;
-  background-color: #f0f4f9;
+  background-color: var(--color-btn-bg);
   padding: 0.2rem;
   border-radius: 20px;
-  border: 1px solid #d0dff5;
+  border: 1px solid var(--color-btn-border);
 }
 
 .lang-btn {
@@ -279,7 +298,7 @@ section {
   padding: 0.3rem 0.7rem;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #555555;
+  color: var(--color-btn-text);
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -293,7 +312,7 @@ section {
 }
 
 .lang-btn:hover:not(.active) {
-  background-color: #e2ebf6;
+  background-color: var(--color-btn-hover);
   color: var(--color-primary);
 }
 
@@ -302,9 +321,9 @@ section {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  background-color: #f0f4f9;
-  border: 1px solid #d0dff5;
-  color: #555555;
+  background-color: var(--color-btn-bg);
+  border: 1px solid var(--color-btn-border);
+  color: var(--color-btn-text);
   padding: 0.35rem 0.8rem;
   font-size: 0.75rem;
   font-weight: 700;
@@ -315,7 +334,7 @@ section {
 }
 
 .pdf-btn:hover {
-  background-color: #e2ebf6;
+  background-color: var(--color-btn-hover);
   color: var(--color-primary);
 }
 
