@@ -1,554 +1,642 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content="Currículo de Moisés Alves Carneiro Filho — Líder e Gestor em TI com mais de 19 anos de experiência."
+    />
+    <title class="lang-pt">Moisés Filho - Curriculum</title>
+    <title class="lang-en">Moisés Filho - Curriculum</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%230056b3'/><text x='50' y='50' font-family='Arial' font-weight='bold' font-size='45' fill='white' dominant-baseline='central' text-anchor='middle'>MF</text></svg>"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <script>
+      function setLanguage(lang) {
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem('preferred-lang', lang);
+        document.querySelectorAll('.lang-btn').forEach((btn) => {
+          btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+        });
+        // Also update meta description and page title if needed dynamically
+        const titlePt = 'Moisés Filho - Curriculum';
+        const titleEn = 'Moisés Filho - Curriculum';
+        document.title = lang === 'pt' ? titlePt : titleEn;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="description"
-    content="Currículo de Moisés Alves Carneiro Filho — Líder e Gestor em TI com mais de 19 anos de experiência.">
-  <title class="lang-pt">Moisés Filho - Curriculum</title>
-  <title class="lang-en">Moisés Filho - Curriculum</title>
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%230056b3'/><text x='50' y='50' font-family='Arial' font-weight='bold' font-size='45' fill='white' dominant-baseline='central' text-anchor='middle'>MF</text></svg>">
-  <link rel="stylesheet" href="index.css">
-  <script>
-    function setLanguage(lang) {
-      document.documentElement.setAttribute('lang', lang);
-      localStorage.setItem('preferred-lang', lang);
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      function toggleDarkMode() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      }
+
+      // Set preferences early to avoid page flash
+      const savedLang = localStorage.getItem('preferred-lang') || (navigator.language.startsWith('en') ? 'en' : 'pt');
+      document.documentElement.setAttribute('lang', savedLang);
+
+      const savedTheme =
+        localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+  </head>
+
+  <body>
+    <main>
+      <!-- Controles do Topo (Idioma e PDF) -->
+      <div class="top-controls">
+        <div class="lang-selector">
+          <button class="lang-btn" data-lang="pt" onclick="setLanguage('pt')">PT</button>
+          <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+        </div>
+        <button class="pdf-btn" onclick="toggleDarkMode()" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path
+              d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"
+            />
+          </svg>
+        </button>
+        <button class="pdf-btn" onclick="window.print()">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+          </svg>
+          <span class="lang-pt">Baixar PDF</span>
+          <span class="lang-en">Download PDF</span>
+        </button>
+      </div>
+
+      <!-- Cabeçalho -->
+      <header>
+        <h1>Moisés Alves Carneiro Filho</h1>
+        <div class="contact">
+          <span class="contact-item">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+              />
+            </svg>
+            <span class="lang-pt">Fortaleza/CE, Brasil</span>
+            <span class="lang-en">Fortaleza/CE, Brazil</span>
+          </span>
+          <span class="contact-item">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+              />
+            </svg>
+            <a href="tel:+5585981188645">(85) 98118-8645</a>
+          </span>
+          <span class="contact-item">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+              />
+            </svg>
+            <a href="mailto:moises.son@gmail.com">moises.son@gmail.com</a>
+          </span>
+          <span class="contact-item">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+              />
+            </svg>
+            <a href="https://linkedin.com/in/moisesacfilho" target="_blank" rel="noopener">in/moisesacfilho</a>
+          </span>
+          <span class="contact-item">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56-.6 1.11-1.06 2.31-1.38 3.56zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.66-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"
+              />
+            </svg>
+            <span class="lang-pt">Inglês Intermediário</span>
+            <span class="lang-en">Intermediate English</span>
+          </span>
+        </div>
+      </header>
+
+      <!-- Resumo Profissional -->
+      <section id="resumo">
+        <h2>
+          <span class="lang-pt">Resumo Profissional</span>
+          <span class="lang-en">Professional Summary</span>
+        </h2>
+        <p class="lang-pt">
+          Líder e Gestor em Tecnologia da Informação com mais de 19 anos de experiência, sendo 15 anos em liderança de
+          times, arquitetura de software e cultura DevOps/SRE. Atuação focada na condução de equipes de alta performance
+          e na implantação de processos de engenharia orientados à confiabilidade, eficiência e resultados de negócio.
+          Histórico comprovado na estruturação de times, melhoria de processos ágeis, elevação de cobertura de testes
+          para níveis superiores a 80%, automação de pipelines de deploy e redução significativa de falhas em sistemas
+          críticos. Experiência sólida na gestão de incidentes, estabelecimento de metas de confiabilidade e ambientes
+          corporativos complexos, alinhando estratégia tecnológica e automações eficientes (incluindo IA assistida) às
+          necessidades de escala do negócio.
+        </p>
+        <p class="lang-en">
+          IT Leader and Manager with over 19 years of experience, including 15 years in team leadership, software
+          architecture, and DevOps/SRE culture. Focused on leading high-performance teams and implementing engineering
+          processes oriented towards reliability, efficiency, and business outcomes. Proven track record in structuring
+          teams, improving agile processes, increasing test coverage to over 80%, automating deployment pipelines, and
+          significantly reducing failures in critical systems. Solid experience in incident management, establishing
+          reliability goals (SLIs/SLOs), and managing complex enterprise environments, aligning technological strategy
+          and efficient automation (including AI-assisted) to business scalability needs.
+        </p>
+      </section>
+
+      <!-- Competências Técnicas -->
+      <section id="competencias">
+        <h2>
+          <span class="lang-pt">Competências Técnicas</span>
+          <span class="lang-en">Technical Skills</span>
+        </h2>
+
+        <div class="skill-row">
+          <span class="skill-label">
+            <span class="lang-pt">Linguagens &amp; Frameworks</span>
+            <span class="lang-en">Languages &amp; Frameworks</span>
+          </span>
+          <span class="skill-value"
+            >Node.js (NestJS) · C# (.NET Core) · Java (Spring Boot) · TypeScript · Angular · React</span
+          >
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">Cloud &amp; DevOps / SRE</span>
+          <span class="skill-value"
+            >Microsoft Azure · AWS · Kubernetes · Helm · Terraform · Docker · GitHub Actions · Jenkins · Azure DevOps ·
+            FinOps</span
+          >
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">
+            <span class="lang-pt">Confiabilidade</span>
+            <span class="lang-en">Reliability</span>
+          </span>
+          <span class="skill-value">
+            <span class="lang-pt">SLIs/SLOs · Error Budgets · Postmortem Blameless · Governança de Incidentes</span>
+            <span class="lang-en">SLIs/SLOs · Error Budgets · Blameless Postmortems · Incident Governance</span>
+          </span>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">
+            <span class="lang-pt">Bancos de Dados</span>
+            <span class="lang-en">Databases</span>
+          </span>
+          <span class="skill-value">SQL Server · SQL Azure · PostgreSQL · Oracle</span>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">
+            <span class="lang-pt">Metodologias</span>
+            <span class="lang-en">Methodologies</span>
+          </span>
+          <span class="skill-value">
+            <span class="lang-pt">Scrum · Kanban · DevOps/SRE · Microserviços · CQRS</span>
+            <span class="lang-en">Scrum · Kanban · DevOps/SRE · Microservices · CQRS</span>
+          </span>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">
+            <span class="lang-pt">Gestão &amp; Soft Skills</span>
+            <span class="lang-en">Management &amp; Soft Skills</span>
+          </span>
+          <span class="skill-value">
+            <span class="lang-pt">Mentoria de Carreira (PDI) · Gestão de Stakeholders · Tech Recruiting</span>
+            <span class="lang-en">Career Mentorship (IDP) · Stakeholder Management · Tech Recruiting</span>
+          </span>
+        </div>
+      </section>
+
+      <!-- Experiência Profissional -->
+      <section id="experiencia">
+        <h2>
+          <span class="lang-pt">Experiência Profissional</span>
+          <span class="lang-en">Professional Experience</span>
+        </h2>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-title">
+              <span class="lang-pt">Coordenador e Líder Técnico</span>
+              <span class="lang-en">Coordinator and Tech Lead</span>
+            </span>
+            <span class="job-period">
+              <span class="lang-pt">Jun 2022 – Atual</span>
+              <span class="lang-en">Jun 2022 – Present</span>
+            </span>
+          </div>
+          <p class="job-company">Atos/Semantix</p>
+          <ul>
+            <li>
+              <span class="lang-pt"
+                ><strong>Gestão e Liderança:</strong> Coordenação de times multidisciplinares (Desenvolvimento, Design,
+                DevOps, Testes e Requisitos), com foco em PDI e interface entre negócio e execução técnica.</span
+              >
+              <span class="lang-en"
+                ><strong>Management &amp; Leadership:</strong> Coordination of multidisciplinary teams (Development,
+                Design, DevOps, Testing, and Requirements), focusing on Individual Development Plans (IDP) and the
+                interface between business strategy and technical execution.</span
+              >
+            </li>
+            <li>
+              <span class="lang-pt"
+                ><strong>Cultura de SRE &amp; Processos Ágeis:</strong> Revisão e implantação do processo Scrum,
+                elevando a previsibilidade das entregas. Adoção de práticas de confiabilidade, métricas de saúde e IA
+                assistida para otimização do fluxo das equipes.</span
+              >
+              <span class="lang-en"
+                ><strong>SRE Culture &amp; Agile Processes:</strong> Review and implementation of the Scrum process,
+                increasing delivery predictability. Adoption of reliability practices, system health metrics, and
+                AI-assisted workflows to optimize team efficiency.</span
+              >
+            </li>
+            <li>
+              <span class="lang-pt"
+                ><strong>Qualidade &amp; Observabilidade:</strong> Estratégia de testes automatizados que elevou a
+                cobertura de 0% para mais de 80%, mitigando riscos operacionais e promovendo monitoramento
+                proativo.</span
+              >
+              <span class="lang-en"
+                ><strong>Quality &amp; Observability:</strong> Automated testing strategy that raised coverage from 0%
+                to over 80%, mitigating operational risks and promoting proactive monitoring.</span
+              >
+            </li>
+            <li>
+              <span class="lang-pt"
+                ><strong>Arquitetura e Backend:</strong> Definição e sustentação da arquitetura de ferramentas globais
+                utilizando Node.js, TypeScript e NestJS.</span
+              >
+              <span class="lang-en"
+                ><strong>Architecture &amp; Backend:</strong> Definition and support of the global tools architecture
+                using Node.js, TypeScript, and NestJS.</span
+              >
+            </li>
+            <li>
+              <span class="lang-pt"
+                ><strong>DevOps e Automação:</strong> Automação completa do processo de deploy com GitHub Actions,
+                Kubernetes, Helm e Terraform, reduzindo o tempo de deploy em mais de 50%.</span
+              >
+              <span class="lang-en"
+                ><strong>DevOps &amp; Automation:</strong> Full deployment process automation using GitHub Actions,
+                Kubernetes, Helm, and Terraform, reducing deployment time by more than 50%.</span
+              >
+            </li>
+          </ul>
+          <p class="job-team">
+            <span class="lang-pt">Tamanho do time: 10 a 30 pessoas</span>
+            <span class="lang-en">Team size: 10 to 30 people</span>
+          </p>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-title">
+              <span class="lang-pt">Líder Técnico</span>
+              <span class="lang-en">Tech Lead</span>
+            </span>
+            <span class="job-period">
+              <span class="lang-pt">Abr 2021 – Mai 2022</span>
+              <span class="lang-en">Apr 2021 – May 2022</span>
+            </span>
+          </div>
+          <p class="job-company">JBQ Global (Pague Menos)</p>
+          <ul>
+            <li>
+              <span class="lang-pt"
+                ><strong>Gestão de Infraestrutura &amp; AWS:</strong> Orquestração de ambientes Kubernetes críticos em
+                AWS com deploys automatizados via Azure DevOps, garantindo alta disponibilidade e resiliência.</span
+              >
+              <span class="lang-en"
+                ><strong>Cloud Infrastructure &amp; AWS:</strong> Orchestrating critical Kubernetes environments on AWS
+                with automated deployments via Azure DevOps, ensuring high availability and resilience.</span
+              >
+            </li>
+            <li>
+              <span class="lang-pt"
+                ><strong>Liderança em Resolução de Incidentes:</strong> Condução do time técnico até a estabilização e
+                entrada em produção de um produto altamente crítico em fase de rollout.</span
+              >
+              <span class="lang-en"
+                ><strong>Incident Resolution Leadership:</strong> Leading the technical team through the stabilization
+                and production rollout of a highly critical retail product.</span
+              >
+            </li>
+            <li>
+              <span class="lang-pt"
+                ><strong>Integração de Sistemas:</strong> Desenvolvimento e coordenação de integrações complexas entre
+                plataforma de e-commerce e sistemas legados utilizando C#/.NET Core.</span
+              >
+              <span class="lang-en"
+                ><strong>System Integration:</strong> Development and coordination of complex integrations between the
+                e-commerce platform and legacy systems using C#/.NET Core.</span
+              >
+            </li>
+          </ul>
+          <p class="job-team">
+            <span class="lang-pt">Tamanho do time: 5 a 10 pessoas</span>
+            <span class="lang-en">Team size: 5 to 10 people</span>
+          </p>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-title">
+              <span class="lang-pt">Líder Técnico e Arquiteto de Software</span>
+              <span class="lang-en">Tech Lead and Software Architect</span>
+            </span>
+            <span class="job-period">
+              <span class="lang-pt">Jan 2018 – Abr 2021</span>
+              <span class="lang-en">Jan 2018 – Apr 2021</span>
+            </span>
+          </div>
+          <p class="job-company">Secretaria da Fazenda do Ceará (SEFAZ-CE)</p>
+          <ul>
+            <li>
+              <span class="lang-pt"
+                ><strong>Sistemas de Missão Crítica:</strong> Liderança técnica no sistema core de arrecadação estadual,
+                responsável pelo processamento e análise automatizada de todas as notas fiscais do Estado do
+                Ceará.</span
+              >
+              <span class="lang-en"
+                ><strong>Mission-Critical Systems:</strong> Technical leadership in the state's core tax collection
+                system, responsible for the automated processing and analysis of all electronic invoices in Ceará.</span
+              >
+            </li>
+            <li>
+              <span class="lang-pt"
+                ><strong>Redução de Erros &amp; Modernização:</strong> Revisão arquitetural completa com redução
+                superior a 50% nas reclamações por falhas operacionais.</span
+              >
+              <span class="lang-en"
+                ><strong>Error Reduction &amp; Modernization:</strong> Full architectural review resulting in a
+                reduction of over 50% in operational complaints.</span
+              >
+            </li>
+            <li>
+              <span class="lang-pt"
+                ><strong>Cultura DevOps &amp; Testes:</strong> Implantação de CI via Jenkins e orquestração de
+                containers em OpenShift. Cobertura de testes automatizados elevada para mais de 80%.</span
+              >
+              <span class="lang-en"
+                ><strong>DevOps Culture &amp; Testing:</strong> CI implementation using Jenkins and container
+                orchestration with OpenShift. Raised automated test coverage to over 80%.</span
+              >
+            </li>
+            <li>
+              <span class="lang-pt"
+                ><strong>Arquitetura:</strong> Definição do novo padrão arquitetural para projetos da secretaria
+                utilizando Java/Spring Boot, Angular 7+ e Material Design.</span
+              >
+              <span class="lang-en"
+                ><strong>Architecture:</strong> Definition of the new architectural standard for the department's
+                projects using Java/Spring Boot, Angular 7+, and Material Design.</span
+              >
+            </li>
+          </ul>
+          <p class="job-team">
+            <span class="lang-pt">Tamanho do time: 5 a 10 pessoas</span>
+            <span class="lang-en">Team size: 5 to 10 people</span>
+          </p>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-title">
+              <span class="lang-pt">Gerente de Projetos e Arquiteto de Software</span>
+              <span class="lang-en">Project Manager and Software Architect</span>
+            </span>
+            <span class="job-period">
+              <span class="lang-pt">Dez 2007 – Jan 2018</span>
+              <span class="lang-en">Dec 2007 – Jan 2018</span>
+            </span>
+          </div>
+          <p class="job-company">ND Engenharia e Software</p>
+          <ul>
+            <li>
+              <span class="lang-pt"
+                ><strong>Liderança e Evolução:</strong> Evolução profissional de desenvolvedor a Gerente de Projetos e
+                Arquiteto, liderando equipes e decisões técnicas estratégicas.</span
+              >
+              <span class="lang-en"
+                ><strong>Leadership &amp; Evolution:</strong> Career progression from developer to Project Manager and
+                Architect, leading teams and strategic technical decisions.</span
+              >
+            </li>
+            <li>
+              <span class="lang-pt"
+                ><strong>Desenvolvimento Cloud:</strong> Arquitetura e desenvolvimento do sistema Pulse Saúde,
+                plataforma cloud que fornece resultados online para milhares de clientes em todo o Brasil.</span
+              >
+              <span class="lang-en"
+                ><strong>Cloud Development:</strong> Architecture and development of the "Pulse Saúde" system, a cloud
+                platform providing online medical results to thousands of customers across Brazil.</span
+              >
+            </li>
+            <li>
+              <span class="lang-pt"
+                ><strong>Resiliência e Escalabilidade:</strong> Definição de arquitetura resiliente em Microsoft Azure,
+                com foco em alta disponibilidade, escalabilidade e melhoria na qualidade do produto.</span
+              >
+              <span class="lang-en"
+                ><strong>Resilience &amp; Scalability:</strong> Resilient architecture design on Microsoft Azure,
+                focusing on high availability, scalability, and product quality improvements.</span
+              >
+            </li>
+            <li>
+              <span class="lang-pt"
+                ><strong>Modernização e Integração:</strong> Modernização de sistemas legados e integração via Web
+                Services (SOAP/REST), XML e JSON.</span
+              >
+              <span class="lang-en"
+                ><strong>Modernization &amp; Integration:</strong> Modernization of legacy systems and integration using
+                Web Services (SOAP/REST), XML, and JSON.</span
+              >
+            </li>
+          </ul>
+          <p class="job-team">
+            <span class="lang-pt">Tamanho do time: 5 a 10 pessoas</span>
+            <span class="lang-en">Team size: 5 to 10 people</span>
+          </p>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-title">
+              <span class="lang-pt">Coordenador de TI</span>
+              <span class="lang-en">IT Coordinator</span>
+            </span>
+            <span class="job-period">
+              <span class="lang-pt">Jul 2006 – Nov 2007</span>
+              <span class="lang-en">Jul 2006 – Nov 2007</span>
+            </span>
+          </div>
+          <p class="job-company">FIOTEX</p>
+          <ul>
+            <li>
+              <span class="lang-pt"
+                ><strong>Gestão de Infraestrutura:</strong> Gestão de infraestrutura de TI, redes e bancos de
+                dados.</span
+              >
+              <span class="lang-en"
+                ><strong>Infrastructure Management:</strong> IT infrastructure, network, and database management.</span
+              >
+            </li>
+            <li>
+              <span class="lang-pt"
+                ><strong>Administração de ERP:</strong> Customização, suporte e administração do ERP RM Sistemas
+                (TOTVS).</span
+              >
+              <span class="lang-en"
+                ><strong>ERP Administration:</strong> Customization, support, and administration of the RM Sistemas ERP
+                (TOTVS).</span
+              >
+            </li>
+          </ul>
+          <p class="job-team">
+            <span class="lang-pt">Tamanho do time: 2 a 5 pessoas</span>
+            <span class="lang-en">Team size: 2 to 5 people</span>
+          </p>
+        </article>
+      </section>
+
+      <!-- Projetos de Destaque / Open Source -->
+      <section id="projetos">
+        <h2>
+          <span class="lang-pt">Projetos de Destaque &amp; Open Source</span>
+          <span class="lang-en">Highlighted Projects &amp; Open Source</span>
+        </h2>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-title">
+              <span class="lang-pt">Currículo Digital</span>
+              <span class="lang-en">Digital Resume</span>
+            </span>
+            <span class="job-period">
+              <a href="https://github.com/moisesfilho/curriculum" target="_blank" rel="noopener"
+                >github.com/moisesfilho/curriculum</a
+              >
+            </span>
+          </div>
+          <p style="text-align: justify; margin-top: 0.3rem; color: var(--color-text-muted)">
+            <span class="lang-pt"
+              >Página estática responsiva de alta performance com Internacionalização, Dark Mode e geração inteligente
+              de PDF via CSS <code>@media print</code>. Deploy 100% automatizado (CI/CD) via GitHub Actions.</span
+            >
+            <span class="lang-en"
+              >High-performance responsive static page featuring Internationalization, Dark Mode, and smart PDF
+              generation via CSS <code>@media print</code>. Fully automated deployment (CI/CD) using GitHub
+              Actions.</span
+            >
+          </p>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-title">
+              <span class="lang-pt">Projetos de IoT &amp; Automação</span>
+              <span class="lang-en">IoT &amp; Automation Projects</span>
+            </span>
+            <span class="job-period">
+              <a href="https://github.com/moisesfilho/apiArduino" target="_blank" rel="noopener"
+                >github.com/moisesfilho/apiArduino</a
+              >
+            </span>
+          </div>
+          <p style="text-align: justify; margin-top: 0.3rem; color: var(--color-text-muted)">
+            <span class="lang-pt"
+              >Criação de APIs e integrações de hardware/software utilizando Arduino, C++ e Webhooks para coleta e
+              transmissão de dados de sensores (ex: DHT22).</span
+            >
+            <span class="lang-en"
+              >Creation of APIs and hardware/software integrations using Arduino, C++, and Webhooks for sensor data
+              collection and transmission (e.g., DHT22).</span
+            >
+          </p>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-title">
+              <span class="lang-pt">PWA &amp; Flutter Apps</span>
+              <span class="lang-en">PWA &amp; Flutter Apps</span>
+            </span>
+            <span class="job-period">
+              <a href="https://github.com/moisesfilho/meuipva" target="_blank" rel="noopener"
+                >github.com/moisesfilho/meuipva</a
+              >
+            </span>
+          </div>
+          <p style="text-align: justify; margin-top: 0.3rem; color: var(--color-text-muted)">
+            <span class="lang-pt"
+              >Estudos avançados e implementações práticas focadas em arquitetura mobile com Flutter (integração de APIs
+              e persistência local) e aplicações web progressivas (PWA).</span
+            >
+            <span class="lang-en"
+              >Advanced studies and practical implementations focused on mobile architecture with Flutter (API
+              integration and local persistence) and Progressive Web Apps (PWA).</span
+            >
+          </p>
+        </article>
+      </section>
+
+      <!-- Formação Acadêmica -->
+      <section id="formacao">
+        <h2>
+          <span class="lang-pt">Formação Acadêmica</span>
+          <span class="lang-en">Education</span>
+        </h2>
+        <div class="edu-item">
+          <strong>
+            <span class="lang-pt">Graduação em Sistemas de Informação</span>
+            <span class="lang-en">Bachelor's Degree in Information Systems</span> </strong
+          ><br />
+          <span>
+            <span class="lang-pt">Faculdade 7 de Setembro — Concluído em 2008</span>
+            <span class="lang-en">Faculdade 7 de Setembro — Completed in 2008</span>
+          </span>
+        </div>
+      </section>
+
+      <!-- Aperfeiçoamento Recente -->
+      <section id="aperfeicoamento">
+        <h2>
+          <span class="lang-pt">Aperfeiçoamento Recente</span>
+          <span class="lang-en">Recent Professional Development</span>
+        </h2>
+        <div class="cert-item">
+          <strong>
+            <span class="lang-pt">License to Manager – Formação de Gestores</span>
+            <span class="lang-en">License to Manager – Leadership Training</span>
+          </strong>
+          <span> | Atos, 2024</span>
+        </div>
+        <div class="cert-item">
+          <strong>
+            <span class="lang-pt">Especialista Flutter (Formação Completa)</span>
+            <span class="lang-en">Flutter Specialist (Complete Training)</span>
+          </strong>
+          <span> | Alura, 2020</span>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const activeLang = document.documentElement.getAttribute('lang') || 'pt';
+        document.querySelectorAll('.lang-btn').forEach((btn) => {
+          btn.classList.toggle('active', btn.getAttribute('data-lang') === activeLang);
+        });
+        // Update page title initially
+        const titlePt = 'Moisés Alves Carneiro Filho — Currículo';
+        const titleEn = 'Moisés Alves Carneiro Filho — Resume';
+        document.title = activeLang === 'pt' ? titlePt : titleEn;
       });
-      // Also update meta description and page title if needed dynamically
-      const titlePt = "Moisés Filho - Curriculum";
-      const titleEn = "Moisés Filho - Curriculum";
-      document.title = lang === 'pt' ? titlePt : titleEn;
-    }
-
-    function toggleDarkMode() {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const newTheme = isDark ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    }
-
-    // Set preferences early to avoid page flash
-    const savedLang = localStorage.getItem('preferred-lang') || (navigator.language.startsWith('en') ? 'en' : 'pt');
-    document.documentElement.setAttribute('lang', savedLang);
-
-    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  </script>
-</head>
-
-<body>
-  <main>
-    <!-- Controles do Topo (Idioma e PDF) -->
-    <div class="top-controls">
-      <div class="lang-selector">
-        <button class="lang-btn" data-lang="pt" onclick="setLanguage('pt')">PT</button>
-        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
-      </div>
-      <button class="pdf-btn" onclick="toggleDarkMode()" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-          <path
-            d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" />
-        </svg>
-      </button>
-      <button class="pdf-btn" onclick="window.print()">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
-        </svg>
-        <span class="lang-pt">Baixar PDF</span>
-        <span class="lang-en">Download PDF</span>
-      </button>
-    </div>
-
-    <!-- Cabeçalho -->
-    <header>
-      <h1>Moisés Alves Carneiro Filho</h1>
-      <div class="contact">
-        <span class="contact-item">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-          </svg>
-          <span class="lang-pt">Fortaleza/CE, Brasil</span>
-          <span class="lang-en">Fortaleza/CE, Brazil</span>
-        </span>
-        <span class="contact-item">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-          </svg>
-          <a href="tel:+5585981188645">(85) 98118-8645</a>
-        </span>
-        <span class="contact-item">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-          </svg>
-          <a href="mailto:moises.son@gmail.com">moises.son@gmail.com</a>
-        </span>
-        <span class="contact-item">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-          </svg>
-          <a href="https://linkedin.com/in/moisesacfilho" target="_blank" rel="noopener">in/moisesacfilho</a>
-        </span>
-        <span class="contact-item">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56-.6 1.11-1.06 2.31-1.38 3.56zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.66-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" />
-          </svg>
-          <span class="lang-pt">Inglês Intermediário</span>
-          <span class="lang-en">Intermediate English</span>
-        </span>
-      </div>
-    </header>
-
-    <!-- Resumo Profissional -->
-    <section id="resumo">
-      <h2>
-        <span class="lang-pt">Resumo Profissional</span>
-        <span class="lang-en">Professional Summary</span>
-      </h2>
-      <p class="lang-pt">
-        Líder e Gestor em Tecnologia da Informação com mais de 19 anos de experiência, sendo 15 anos
-        em liderança de times, arquitetura de software e cultura DevOps/SRE. Atuação focada na condução
-        de equipes de alta performance e na implantação de processos de engenharia orientados à
-        confiabilidade, eficiência e resultados de negócio. Histórico comprovado na estruturação de
-        times, melhoria de processos ágeis, elevação de cobertura de testes para níveis superiores a
-        80%, automação de pipelines de deploy e redução significativa de falhas em sistemas críticos.
-        Experiência sólida na gestão de incidentes, estabelecimento de metas de confiabilidade e
-        ambientes corporativos complexos, alinhando estratégia tecnológica e automações eficientes
-        (incluindo IA assistida) às necessidades de escala do negócio.
-      </p>
-      <p class="lang-en">
-        IT Leader and Manager with over 19 years of experience, including 15 years in team leadership,
-        software architecture, and DevOps/SRE culture. Focused on leading high-performance teams and
-        implementing engineering processes oriented towards reliability, efficiency, and business outcomes.
-        Proven track record in structuring teams, improving agile processes, increasing test coverage to over
-        80%, automating deployment pipelines, and significantly reducing failures in critical systems.
-        Solid experience in incident management, establishing reliability goals (SLIs/SLOs), and managing complex
-        enterprise environments, aligning technological strategy and efficient automation (including AI-assisted)
-        to business scalability needs.
-      </p>
-    </section>
-
-    <!-- Competências Técnicas -->
-    <section id="competencias">
-      <h2>
-        <span class="lang-pt">Competências Técnicas</span>
-        <span class="lang-en">Technical Skills</span>
-      </h2>
-
-      <div class="skill-row">
-        <span class="skill-label">
-          <span class="lang-pt">Linguagens &amp; Frameworks</span>
-          <span class="lang-en">Languages &amp; Frameworks</span>
-        </span>
-        <span class="skill-value">Node.js (NestJS) · C# (.NET Core) · Java (Spring Boot) · TypeScript · Angular ·
-          React</span>
-      </div>
-
-      <div class="skill-row">
-        <span class="skill-label">Cloud &amp; DevOps / SRE</span>
-        <span class="skill-value">Microsoft Azure · AWS · Kubernetes · Helm · Terraform · Docker · GitHub Actions ·
-          Jenkins · Azure DevOps · FinOps</span>
-      </div>
-
-      <div class="skill-row">
-        <span class="skill-label">
-          <span class="lang-pt">Confiabilidade</span>
-          <span class="lang-en">Reliability</span>
-        </span>
-        <span class="skill-value">
-          <span class="lang-pt">SLIs/SLOs · Error Budgets · Postmortem Blameless · Governança de Incidentes</span>
-          <span class="lang-en">SLIs/SLOs · Error Budgets · Blameless Postmortems · Incident Governance</span>
-        </span>
-      </div>
-
-      <div class="skill-row">
-        <span class="skill-label">
-          <span class="lang-pt">Bancos de Dados</span>
-          <span class="lang-en">Databases</span>
-        </span>
-        <span class="skill-value">SQL Server · SQL Azure · PostgreSQL · Oracle</span>
-      </div>
-
-      <div class="skill-row">
-        <span class="skill-label">
-          <span class="lang-pt">Metodologias</span>
-          <span class="lang-en">Methodologies</span>
-        </span>
-        <span class="skill-value">
-          <span class="lang-pt">Scrum · Kanban · DevOps/SRE · Microserviços · CQRS</span>
-          <span class="lang-en">Scrum · Kanban · DevOps/SRE · Microservices · CQRS</span>
-        </span>
-      </div>
-
-      <div class="skill-row">
-        <span class="skill-label">
-          <span class="lang-pt">Gestão &amp; Soft Skills</span>
-          <span class="lang-en">Management &amp; Soft Skills</span>
-        </span>
-        <span class="skill-value">
-          <span class="lang-pt">Mentoria de Carreira (PDI) · Gestão de Stakeholders · Tech Recruiting</span>
-          <span class="lang-en">Career Mentorship (IDP) · Stakeholder Management · Tech Recruiting</span>
-        </span>
-      </div>
-    </section>
-
-    <!-- Experiência Profissional -->
-    <section id="experiencia">
-      <h2>
-        <span class="lang-pt">Experiência Profissional</span>
-        <span class="lang-en">Professional Experience</span>
-      </h2>
-
-      <article class="job">
-        <div class="job-header">
-          <span class="job-title">
-            <span class="lang-pt">Coordenador e Líder Técnico</span>
-            <span class="lang-en">Coordinator and Tech Lead</span>
-          </span>
-          <span class="job-period">
-            <span class="lang-pt">Jun 2022 – Atual</span>
-            <span class="lang-en">Jun 2022 – Present</span>
-          </span>
-        </div>
-        <p class="job-company">Atos/Semantix</p>
-        <ul>
-          <li>
-            <span class="lang-pt"><strong>Gestão e Liderança:</strong> Coordenação de times multidisciplinares
-              (Desenvolvimento, Design, DevOps, Testes e Requisitos), com foco em PDI e interface entre negócio e
-              execução técnica.</span>
-            <span class="lang-en"><strong>Management &amp; Leadership:</strong> Coordination of multidisciplinary teams
-              (Development, Design, DevOps, Testing, and Requirements), focusing on Individual Development Plans (IDP)
-              and the interface between business strategy and technical execution.</span>
-          </li>
-          <li>
-            <span class="lang-pt"><strong>Cultura de SRE &amp; Processos Ágeis:</strong> Revisão e implantação do
-              processo Scrum, elevando a previsibilidade das entregas. Adoção de práticas de confiabilidade, métricas de
-              saúde e IA assistida para otimização do fluxo das equipes.</span>
-            <span class="lang-en"><strong>SRE Culture &amp; Agile Processes:</strong> Review and implementation of the
-              Scrum process, increasing delivery predictability. Adoption of reliability practices, system health
-              metrics, and AI-assisted workflows to optimize team efficiency.</span>
-          </li>
-          <li>
-            <span class="lang-pt"><strong>Qualidade &amp; Observabilidade:</strong> Estratégia de testes automatizados
-              que elevou a cobertura de 0% para mais de 80%, mitigando riscos operacionais e promovendo monitoramento
-              proativo.</span>
-            <span class="lang-en"><strong>Quality &amp; Observability:</strong> Automated testing strategy that raised
-              coverage from 0% to over 80%, mitigating operational risks and promoting proactive monitoring.</span>
-          </li>
-          <li>
-            <span class="lang-pt"><strong>Arquitetura e Backend:</strong> Definição e sustentação da arquitetura de
-              ferramentas globais utilizando Node.js, TypeScript e NestJS.</span>
-            <span class="lang-en"><strong>Architecture &amp; Backend:</strong> Definition and support of the global
-              tools architecture using Node.js, TypeScript, and NestJS.</span>
-          </li>
-          <li>
-            <span class="lang-pt"><strong>DevOps e Automação:</strong> Automação completa do processo de deploy com
-              GitHub Actions, Kubernetes, Helm e Terraform, reduzindo o tempo de deploy em mais de 50%.</span>
-            <span class="lang-en"><strong>DevOps &amp; Automation:</strong> Full deployment process automation using
-              GitHub Actions, Kubernetes, Helm, and Terraform, reducing deployment time by more than 50%.</span>
-          </li>
-        </ul>
-        <p class="job-team">
-          <span class="lang-pt">Tamanho do time: 10 a 30 pessoas</span>
-          <span class="lang-en">Team size: 10 to 30 people</span>
-        </p>
-      </article>
-
-      <article class="job">
-        <div class="job-header">
-          <span class="job-title">
-            <span class="lang-pt">Líder Técnico</span>
-            <span class="lang-en">Tech Lead</span>
-          </span>
-          <span class="job-period">
-            <span class="lang-pt">Abr 2021 – Mai 2022</span>
-            <span class="lang-en">Apr 2021 – May 2022</span>
-          </span>
-        </div>
-        <p class="job-company">JBQ Global (Pague Menos)</p>
-        <ul>
-          <li>
-            <span class="lang-pt"><strong>Gestão de Infraestrutura &amp; AWS:</strong> Orquestração de ambientes
-              Kubernetes críticos em AWS com deploys automatizados via Azure DevOps, garantindo alta disponibilidade e
-              resiliência.</span>
-            <span class="lang-en"><strong>Cloud Infrastructure &amp; AWS:</strong> Orchestrating critical Kubernetes
-              environments on AWS with automated deployments via Azure DevOps, ensuring high availability and
-              resilience.</span>
-          </li>
-          <li>
-            <span class="lang-pt"><strong>Liderança em Resolução de Incidentes:</strong> Condução do time técnico até a
-              estabilização e entrada em produção de um produto altamente crítico em fase de rollout.</span>
-            <span class="lang-en"><strong>Incident Resolution Leadership:</strong> Leading the technical team through
-              the stabilization and production rollout of a highly critical retail product.</span>
-          </li>
-          <li>
-            <span class="lang-pt"><strong>Integração de Sistemas:</strong> Desenvolvimento e coordenação de integrações
-              complexas entre plataforma de e-commerce e sistemas legados utilizando C#/.NET Core.</span>
-            <span class="lang-en"><strong>System Integration:</strong> Development and coordination of complex
-              integrations between the e-commerce platform and legacy systems using C#/.NET Core.</span>
-          </li>
-        </ul>
-        <p class="job-team">
-          <span class="lang-pt">Tamanho do time: 5 a 10 pessoas</span>
-          <span class="lang-en">Team size: 5 to 10 people</span>
-        </p>
-      </article>
-
-      <article class="job">
-        <div class="job-header">
-          <span class="job-title">
-            <span class="lang-pt">Líder Técnico e Arquiteto de Software</span>
-            <span class="lang-en">Tech Lead and Software Architect</span>
-          </span>
-          <span class="job-period">
-            <span class="lang-pt">Jan 2018 – Abr 2021</span>
-            <span class="lang-en">Jan 2018 – Apr 2021</span>
-          </span>
-        </div>
-        <p class="job-company">Secretaria da Fazenda do Ceará (SEFAZ-CE)</p>
-        <ul>
-          <li>
-            <span class="lang-pt"><strong>Sistemas de Missão Crítica:</strong> Liderança técnica no sistema core de
-              arrecadação estadual, responsável pelo processamento e análise automatizada de todas as notas fiscais do
-              Estado do Ceará.</span>
-            <span class="lang-en"><strong>Mission-Critical Systems:</strong> Technical leadership in the state's core
-              tax collection system, responsible for the automated processing and analysis of all electronic invoices in
-              Ceará.</span>
-          </li>
-          <li>
-            <span class="lang-pt"><strong>Redução de Erros &amp; Modernização:</strong> Revisão arquitetural completa
-              com redução superior a 50% nas reclamações por falhas operacionais.</span>
-            <span class="lang-en"><strong>Error Reduction &amp; Modernization:</strong> Full architectural review
-              resulting in a reduction of over 50% in operational complaints.</span>
-          </li>
-          <li>
-            <span class="lang-pt"><strong>Cultura DevOps &amp; Testes:</strong> Implantação de CI via Jenkins e
-              orquestração de containers em OpenShift. Cobertura de testes automatizados elevada para mais de
-              80%.</span>
-            <span class="lang-en"><strong>DevOps Culture &amp; Testing:</strong> CI implementation using Jenkins and
-              container orchestration with OpenShift. Raised automated test coverage to over 80%.</span>
-          </li>
-          <li>
-            <span class="lang-pt"><strong>Arquitetura:</strong> Definição do novo padrão arquitetural para projetos da
-              secretaria utilizando Java/Spring Boot, Angular 7+ e Material Design.</span>
-            <span class="lang-en"><strong>Architecture:</strong> Definition of the new architectural standard for the
-              department's projects using Java/Spring Boot, Angular 7+, and Material Design.</span>
-          </li>
-        </ul>
-        <p class="job-team">
-          <span class="lang-pt">Tamanho do time: 5 a 10 pessoas</span>
-          <span class="lang-en">Team size: 5 to 10 people</span>
-        </p>
-      </article>
-
-      <article class="job">
-        <div class="job-header">
-          <span class="job-title">
-            <span class="lang-pt">Gerente de Projetos e Arquiteto de Software</span>
-            <span class="lang-en">Project Manager and Software Architect</span>
-          </span>
-          <span class="job-period">
-            <span class="lang-pt">Dez 2007 – Jan 2018</span>
-            <span class="lang-en">Dec 2007 – Jan 2018</span>
-          </span>
-        </div>
-        <p class="job-company">ND Engenharia e Software</p>
-        <ul>
-          <li>
-            <span class="lang-pt"><strong>Liderança e Evolução:</strong> Evolução profissional de desenvolvedor a
-              Gerente de Projetos e Arquiteto, liderando equipes e decisões técnicas estratégicas.</span>
-            <span class="lang-en"><strong>Leadership &amp; Evolution:</strong> Career progression from developer to
-              Project Manager and Architect, leading teams and strategic technical decisions.</span>
-          </li>
-          <li>
-            <span class="lang-pt"><strong>Desenvolvimento Cloud:</strong> Arquitetura e desenvolvimento do sistema Pulse
-              Saúde, plataforma cloud que fornece resultados online para milhares de clientes em todo o Brasil.</span>
-            <span class="lang-en"><strong>Cloud Development:</strong> Architecture and development of the "Pulse Saúde"
-              system, a cloud platform providing online medical results to thousands of customers across Brazil.</span>
-          </li>
-          <li>
-            <span class="lang-pt"><strong>Resiliência e Escalabilidade:</strong> Definição de arquitetura resiliente em
-              Microsoft Azure, com foco em alta disponibilidade, escalabilidade e melhoria na qualidade do
-              produto.</span>
-            <span class="lang-en"><strong>Resilience &amp; Scalability:</strong> Resilient architecture design on
-              Microsoft Azure, focusing on high availability, scalability, and product quality improvements.</span>
-          </li>
-          <li>
-            <span class="lang-pt"><strong>Modernização e Integração:</strong> Modernização de sistemas legados e
-              integração via Web Services (SOAP/REST), XML e JSON.</span>
-            <span class="lang-en"><strong>Modernization &amp; Integration:</strong> Modernization of legacy systems and
-              integration using Web Services (SOAP/REST), XML, and JSON.</span>
-          </li>
-        </ul>
-        <p class="job-team">
-          <span class="lang-pt">Tamanho do time: 5 a 10 pessoas</span>
-          <span class="lang-en">Team size: 5 to 10 people</span>
-        </p>
-      </article>
-
-      <article class="job">
-        <div class="job-header">
-          <span class="job-title">
-            <span class="lang-pt">Coordenador de TI</span>
-            <span class="lang-en">IT Coordinator</span>
-          </span>
-          <span class="job-period">
-            <span class="lang-pt">Jul 2006 – Nov 2007</span>
-            <span class="lang-en">Jul 2006 – Nov 2007</span>
-          </span>
-        </div>
-        <p class="job-company">FIOTEX</p>
-        <ul>
-          <li>
-            <span class="lang-pt"><strong>Gestão de Infraestrutura:</strong> Gestão de infraestrutura de TI, redes e
-              bancos de dados.</span>
-            <span class="lang-en"><strong>Infrastructure Management:</strong> IT infrastructure, network, and database
-              management.</span>
-          </li>
-          <li>
-            <span class="lang-pt"><strong>Administração de ERP:</strong> Customização, suporte e administração do ERP RM
-              Sistemas (TOTVS).</span>
-            <span class="lang-en"><strong>ERP Administration:</strong> Customization, support, and administration of the
-              RM Sistemas ERP (TOTVS).</span>
-          </li>
-        </ul>
-        <p class="job-team">
-          <span class="lang-pt">Tamanho do time: 2 a 5 pessoas</span>
-          <span class="lang-en">Team size: 2 to 5 people</span>
-        </p>
-      </article>
-    </section>
-
-    <!-- Projetos de Destaque / Open Source -->
-    <section id="projetos">
-      <h2>
-        <span class="lang-pt">Projetos de Destaque &amp; Open Source</span>
-        <span class="lang-en">Highlighted Projects &amp; Open Source</span>
-      </h2>
-
-      <article class="job">
-        <div class="job-header">
-          <span class="job-title">
-            <span class="lang-pt">Currículo Digital</span>
-            <span class="lang-en">Digital Resume</span>
-          </span>
-          <span class="job-period">
-            <a href="https://github.com/moisesfilho/curriculum" target="_blank"
-              rel="noopener">github.com/moisesfilho/curriculum</a>
-          </span>
-        </div>
-        <p style="text-align: justify; margin-top: 0.3rem; color: var(--color-text-muted);">
-          <span class="lang-pt">Página estática responsiva de alta performance com Internacionalização, Dark Mode e
-            geração inteligente de PDF via CSS <code>@media print</code>. Deploy 100% automatizado (CI/CD) via GitHub
-            Actions.</span>
-          <span class="lang-en">High-performance responsive static page featuring Internationalization, Dark Mode, and
-            smart PDF generation via CSS <code>@media print</code>. Fully automated deployment (CI/CD) using GitHub
-            Actions.</span>
-        </p>
-      </article>
-
-      <article class="job">
-        <div class="job-header">
-          <span class="job-title">
-            <span class="lang-pt">Projetos de IoT &amp; Automação</span>
-            <span class="lang-en">IoT &amp; Automation Projects</span>
-          </span>
-          <span class="job-period">
-            <a href="https://github.com/moisesfilho/apiArduino" target="_blank"
-              rel="noopener">github.com/moisesfilho/apiArduino</a>
-          </span>
-        </div>
-        <p style="text-align: justify; margin-top: 0.3rem; color: var(--color-text-muted);">
-          <span class="lang-pt">Criação de APIs e integrações de hardware/software utilizando Arduino, C++ e Webhooks
-            para coleta e transmissão de dados de sensores (ex: DHT22).</span>
-          <span class="lang-en">Creation of APIs and hardware/software integrations using Arduino, C++, and Webhooks for
-            sensor data collection and transmission (e.g., DHT22).</span>
-        </p>
-      </article>
-
-      <article class="job">
-        <div class="job-header">
-          <span class="job-title">
-            <span class="lang-pt">PWA &amp; Flutter Apps</span>
-            <span class="lang-en">PWA &amp; Flutter Apps</span>
-          </span>
-          <span class="job-period">
-            <a href="https://github.com/moisesfilho/meuipva" target="_blank"
-              rel="noopener">github.com/moisesfilho/meuipva</a>
-          </span>
-        </div>
-        <p style="text-align: justify; margin-top: 0.3rem; color: var(--color-text-muted);">
-          <span class="lang-pt">Estudos avançados e implementações práticas focadas em arquitetura mobile com Flutter
-            (integração de APIs e persistência local) e aplicações web progressivas (PWA).</span>
-          <span class="lang-en">Advanced studies and practical implementations focused on mobile architecture with
-            Flutter (API integration and local persistence) and Progressive Web Apps (PWA).</span>
-        </p>
-      </article>
-    </section>
-
-    <!-- Formação Acadêmica -->
-    <section id="formacao">
-      <h2>
-        <span class="lang-pt">Formação Acadêmica</span>
-        <span class="lang-en">Education</span>
-      </h2>
-      <div class="edu-item">
-        <strong>
-          <span class="lang-pt">Graduação em Sistemas de Informação</span>
-          <span class="lang-en">Bachelor's Degree in Information Systems</span>
-        </strong><br>
-        <span>
-          <span class="lang-pt">Faculdade 7 de Setembro — Concluído em 2008</span>
-          <span class="lang-en">Faculdade 7 de Setembro — Completed in 2008</span>
-        </span>
-      </div>
-    </section>
-
-    <!-- Aperfeiçoamento Recente -->
-    <section id="aperfeicoamento">
-      <h2>
-        <span class="lang-pt">Aperfeiçoamento Recente</span>
-        <span class="lang-en">Recent Professional Development</span>
-      </h2>
-      <div class="cert-item">
-        <strong>
-          <span class="lang-pt">License to Manager – Formação de Gestores</span>
-          <span class="lang-en">License to Manager – Leadership Training</span>
-        </strong>
-        <span> | Atos, 2024</span>
-      </div>
-      <div class="cert-item">
-        <strong>
-          <span class="lang-pt">Especialista Flutter (Formação Completa)</span>
-          <span class="lang-en">Flutter Specialist (Complete Training)</span>
-        </strong>
-        <span> | Alura, 2020</span>
-      </div>
-    </section>
-
-  </main>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const activeLang = document.documentElement.getAttribute('lang') || 'pt';
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-lang') === activeLang);
-      });
-      // Update page title initially
-      const titlePt = "Moisés Alves Carneiro Filho — Currículo";
-      const titleEn = "Moisés Alves Carneiro Filho — Resume";
-      document.title = activeLang === 'pt' ? titlePt : titleEn;
-    });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
