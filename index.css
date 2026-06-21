@@ -47,6 +47,7 @@ main {
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-card);
   padding: 2.5rem 3rem;
+  position: relative;
 }
 
 /* ─── COMPONENTS ─── */
@@ -237,5 +238,57 @@ section {
     box-shadow: none;
     border-radius: 0;
     padding: 1.5rem 2rem;
+  }
+}
+
+/* ─── LANGUAGE SWITCHING ─── */
+[lang="pt"] .lang-en {
+  display: none !important;
+}
+[lang="en"] .lang-pt {
+  display: none !important;
+}
+
+/* Language Selector UI */
+.lang-selector {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.3rem;
+  background-color: #f0f4f9;
+  padding: 0.2rem;
+  border-radius: 20px;
+  border: 1px solid #d0dff5;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #555555;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.lang-btn.active {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lang-btn:hover:not(.active) {
+  background-color: #e2ebf6;
+  color: var(--color-primary);
+}
+
+/* Hide selector in printing */
+@media print {
+  .lang-selector {
+    display: none;
   }
 }
