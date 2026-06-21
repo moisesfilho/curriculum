@@ -59,6 +59,16 @@ body {
   padding: 2rem 1rem;
 }
 
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 main {
   max-width: var(--container-width);
   margin: 0 auto;
