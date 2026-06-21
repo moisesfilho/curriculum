@@ -139,6 +139,7 @@ section {
 
 .skill-value {
   color: var(--color-text-muted);
+  text-align: justify;
 }
 
 /* Experience */
