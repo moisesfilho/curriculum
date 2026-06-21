@@ -27,10 +27,17 @@
 </head>
 <body>
   <main>
-    <!-- Seletor de Idioma -->
-    <div class="lang-selector">
-      <button class="lang-btn" data-lang="pt" onclick="setLanguage('pt')">PT</button>
-      <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+    <!-- Controles do Topo (Idioma e PDF) -->
+    <div class="top-controls">
+      <div class="lang-selector">
+        <button class="lang-btn" data-lang="pt" onclick="setLanguage('pt')">PT</button>
+        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+      </div>
+      <button class="pdf-btn" onclick="window.print()">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        <span class="lang-pt">Baixar PDF</span>
+        <span class="lang-en">Download PDF</span>
+      </button>
     </div>
 
     <!-- Cabeçalho -->
