@@ -256,8 +256,8 @@ section {
 /* Top Controls Container */
 .top-controls {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 2.5rem;
+  right: 3rem;
   display: flex;
   gap: 0.8rem;
   align-items: center;
