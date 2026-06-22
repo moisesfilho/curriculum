@@ -275,15 +275,39 @@ section {
 
 /* Print */
 @media print {
-  body {
-    background-color: #ffffff;
-    padding: 0;
+  @page {
+    size: A4 portrait;
+    margin: 15mm;
+  }
+
+  :root,
+  [data-theme='dark'] {
+    --color-primary: #0056b3 !important;
+    --color-primary-light: #d0dff5 !important;
+    --color-text-main: #333333 !important;
+    --color-text-muted: #555555 !important;
+    --color-text-light: #777777 !important;
+    --color-text-lighter: #888888 !important;
+    --color-bg-body: #ffffff !important;
+    --color-bg-card: #ffffff !important;
+    --color-border: #d0dff5 !important;
+  }
+
+  html, body {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   main {
-    box-shadow: none;
-    border-radius: 0;
-    padding: 1.5rem 2rem;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    max-width: none !important;
+    border: none !important;
+    background-color: #ffffff !important;
   }
 }
 
@@ -291,6 +315,7 @@ section {
 [lang='pt'] .lang-en {
   display: none !important;
 }
+
 [lang='en'] .lang-pt {
   display: none !important;
 }
@@ -363,6 +388,7 @@ section {
 
 /* Hide controls in printing */
 @media print {
+
   .top-controls,
   .no-print {
     display: none !important;
@@ -413,7 +439,7 @@ section {
     width: 54px;
     border-radius: 50%;
   }
-  
+
   .social-badge span {
     display: none;
   }
@@ -423,6 +449,7 @@ section {
 .banner-github {
   background-image: linear-gradient(to right, #24292e, #040d21);
 }
+
 [data-theme='dark'] .banner-github {
   background-image: linear-gradient(to right, #111, #000);
 }
@@ -431,6 +458,7 @@ section {
 .banner-linkedin {
   background-image: linear-gradient(to right, #0077b5, #004182);
 }
+
 [data-theme='dark'] .banner-linkedin {
   background-image: linear-gradient(to right, #005582, #002855);
 }
@@ -439,6 +467,7 @@ section {
 .banner-instagram {
   background-image: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 }
+
 [data-theme='dark'] .banner-instagram {
   background-image: linear-gradient(45deg, #c47625 0%, #b84f22 25%, #a81729 50%, #9c154b 75%, #850c5b 100%);
 }
