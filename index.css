@@ -363,7 +363,82 @@ section {
 
 /* Hide controls in printing */
 @media print {
-  .top-controls {
+  .top-controls,
+  .no-print {
     display: none !important;
   }
+}
+
+/* ─── BADGES SOCIAIS CUSTOMIZADOS ─── */
+.social-footer {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 2rem;
+}
+
+.social-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #ffffff !important;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.social-badge:hover {
+  opacity: 0.9;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.social-badge svg {
+  width: 24px;
+  height: 24px;
+  fill: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .social-badge {
+    width: 54px;
+    border-radius: 50%;
+  }
+  
+  .social-badge span {
+    display: none;
+  }
+}
+
+/* Banner GitHub */
+.banner-github {
+  background-image: linear-gradient(to right, #24292e, #040d21);
+}
+[data-theme='dark'] .banner-github {
+  background-image: linear-gradient(to right, #111, #000);
+}
+
+/* Banner LinkedIn */
+.banner-linkedin {
+  background-image: linear-gradient(to right, #0077b5, #004182);
+}
+[data-theme='dark'] .banner-linkedin {
+  background-image: linear-gradient(to right, #005582, #002855);
+}
+
+/* Banner Instagram */
+.banner-instagram {
+  background-image: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+[data-theme='dark'] .banner-instagram {
+  background-image: linear-gradient(45deg, #c47625 0%, #b84f22 25%, #a81729 50%, #9c154b 75%, #850c5b 100%);
 }
