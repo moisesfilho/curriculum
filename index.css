@@ -98,14 +98,13 @@ header {
 /* Contact Info */
 .contact {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.8rem;
   color: var(--color-text-muted);
   margin-top: 0.8rem;
-  white-space: nowrap;
 
   a {
     color: var(--color-primary);
@@ -258,6 +257,20 @@ section {
   .job-header {
     flex-direction: column;
   }
+
+  .top-controls {
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  header {
+    text-align: center;
+  }
+
+  .contact {
+    justify-content: center;
+    gap: 0.8rem;
+  }
 }
 
 /* Print */
@@ -284,12 +297,12 @@ section {
 
 /* Top Controls Container */
 .top-controls {
-  position: absolute;
-  top: 2.5rem;
-  right: 3rem;
   display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
   gap: 0.8rem;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 /* Language Selector UI */
