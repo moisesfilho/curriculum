@@ -8,8 +8,7 @@
       name="description"
       content="Currículo de Moisés Alves Carneiro Filho — Líder e Gestor em TI com mais de 19 anos de experiência."
     />
-    <title class="lang-pt">Moisés Filho - Curriculum</title>
-    <title class="lang-en">Moisés Filho - Curriculum</title>
+    <title>Moisés Filho - Curriculum</title>
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%230056b3'/><text x='50' y='50' font-family='Arial' font-weight='bold' font-size='45' fill='white' dominant-baseline='central' text-anchor='middle'>MF</text></svg>"
@@ -20,9 +19,10 @@
         document.documentElement.setAttribute('lang', lang);
         localStorage.setItem('preferred-lang', lang);
         document.querySelectorAll('.lang-btn').forEach((btn) => {
-          btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+          const isActive = btn.getAttribute('data-lang') === lang;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-pressed', isActive);
         });
-        // Also update meta description and page title if needed dynamically
         const titlePt = 'Moisés Filho - Curriculum';
         const titleEn = 'Moisés Filho - Curriculum';
         document.title = lang === 'pt' ? titlePt : titleEn;
@@ -50,10 +50,15 @@
       <!-- Controles do Topo (Idioma e PDF) -->
       <div class="top-controls">
         <div class="lang-selector">
-          <button class="lang-btn" data-lang="pt" onclick="setLanguage('pt')">PT</button>
-          <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+          <button class="lang-btn" data-lang="pt" onclick="setLanguage('pt')" aria-pressed="true">PT</button>
+          <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" aria-pressed="false">EN</button>
         </div>
-        <button class="pdf-btn" onclick="toggleDarkMode()" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+        <button
+          class="pdf-btn"
+          onclick="toggleDarkMode()"
+          title="Toggle Dark Mode"
+          aria-label="Alternar Modo Escuro / Toggle Dark Mode"
+        >
           <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
             <path
               d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"
@@ -675,9 +680,10 @@
       document.addEventListener('DOMContentLoaded', () => {
         const activeLang = document.documentElement.getAttribute('lang') || 'pt';
         document.querySelectorAll('.lang-btn').forEach((btn) => {
-          btn.classList.toggle('active', btn.getAttribute('data-lang') === activeLang);
+          const isActive = btn.getAttribute('data-lang') === activeLang;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-pressed', isActive);
         });
-        // Update page title initially
         const titlePt = 'Moisés Filho - Curriculum';
         const titleEn = 'Moisés Filho - Curriculum';
         document.title = activeLang === 'pt' ? titlePt : titleEn;
