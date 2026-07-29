@@ -173,6 +173,15 @@ section {
   text-align: justify;
 }
 
+.skill-value > span:not(.lang-pt):not(.lang-en):not(:last-child)::after {
+  content: ' ·';
+}
+
+.skill-value .lang-pt > span:not(:last-child)::after,
+.skill-value .lang-en > span:not(:last-child)::after {
+  content: ' ·';
+}
+
 /* Experience */
 .job {
   margin-bottom: 1.6rem;
