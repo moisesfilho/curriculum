@@ -28,6 +28,23 @@
         document.title = lang === 'pt' ? titlePt : titleEn;
       }
 
+      function setFontSize(scale) {
+        document.querySelector('main').style.zoom = scale + '%';
+        localStorage.setItem('font-scale', scale);
+      }
+
+      function increaseFont() {
+        const current = parseInt(localStorage.getItem('font-scale')) || 100;
+        const next = current >= 120 ? 100 : current + 10;
+        setFontSize(next);
+      }
+
+      function decreaseFont() {
+        const current = parseInt(localStorage.getItem('font-scale')) || 100;
+        const next = current <= 80 ? 100 : current - 10;
+        setFontSize(next);
+      }
+
       function toggleDarkMode() {
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         const newTheme = isDark ? 'light' : 'dark';
@@ -35,7 +52,7 @@
         localStorage.setItem('theme', newTheme);
       }
 
-      // Set preferences early to avoid page flash
+      // Will apply zoom after DOM is ready (main element required)
       const savedLang = localStorage.getItem('preferred-lang') || (navigator.language.startsWith('en') ? 'en' : 'pt');
       document.documentElement.setAttribute('lang', savedLang);
 
@@ -46,34 +63,60 @@
   </head>
 
   <body>
-    <main>
-      <!-- Controles do Topo (Idioma e PDF) -->
-      <div class="top-controls">
-        <div class="lang-selector">
-          <button class="lang-btn" data-lang="pt" onclick="setLanguage('pt')" aria-pressed="true">PT</button>
-          <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" aria-pressed="false">EN</button>
-        </div>
+    <!-- Controles flutuantes (fora do main) -->
+    <div class="top-controls no-print">
+      <div class="lang-selector">
+        <button class="lang-btn" data-lang="pt" onclick="setLanguage('pt')" aria-pressed="true">PT</button>
+        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" aria-pressed="false">EN</button>
+      </div>
+      <button
+        class="pdf-btn"
+        onclick="toggleDarkMode()"
+        title="Toggle Dark Mode"
+        aria-label="Alternar Modo Escuro / Toggle Dark Mode"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path
+            d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"
+          />
+        </svg>
+      </button>
+      <div class="font-control">
         <button
-          class="pdf-btn"
-          onclick="toggleDarkMode()"
-          title="Toggle Dark Mode"
-          aria-label="Alternar Modo Escuro / Toggle Dark Mode"
+          class="font-btn pdf-btn"
+          onclick="decreaseFont()"
+          title="Reduzir zoom / Zoom out"
+          aria-label="Reduzir zoom / Zoom out"
         >
-          <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-            <path
-              d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"
-            />
-          </svg>
+          A−
         </button>
-        <button class="pdf-btn" onclick="window.print()">
-          <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
-          </svg>
-          <span class="lang-pt">Baixar PDF</span>
-          <span class="lang-en">Download PDF</span>
+        <button
+          class="font-btn pdf-btn"
+          onclick="setFontSize(100)"
+          title="Zoom padrão / Default zoom"
+          aria-label="Zoom padrão / Default zoom"
+        >
+          A
+        </button>
+        <button
+          class="font-btn pdf-btn"
+          onclick="increaseFont()"
+          title="Aumentar zoom / Zoom in"
+          aria-label="Aumentar zoom / Zoom in"
+        >
+          A+
         </button>
       </div>
+      <button class="pdf-btn" onclick="window.print()">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+        </svg>
+        <span class="lang-pt">Baixar PDF</span>
+        <span class="lang-en">Download PDF</span>
+      </button>
+    </div>
 
+    <main>
       <!-- Cabeçalho -->
       <header>
         <h1>Moisés Alves Carneiro Filho</h1>
@@ -654,6 +697,8 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
+        const savedFont = localStorage.getItem('font-scale') || '100';
+        document.querySelector('main').style.zoom = savedFont + '%';
         const activeLang = document.documentElement.getAttribute('lang') || 'pt';
         document.querySelectorAll('.lang-btn').forEach((btn) => {
           const isActive = btn.getAttribute('data-lang') === activeLang;
