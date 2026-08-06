@@ -93,6 +93,13 @@ header {
     font-weight: 700;
     margin-bottom: 0.4rem;
   }
+
+  .headline {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-top: 0.5rem;
+    text-align: justify;
+  }
 }
 
 /* Contact Info */
