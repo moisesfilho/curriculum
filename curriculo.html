@@ -66,6 +66,13 @@
         document.querySelector('meta[property="og:description"]').content = document.querySelector('meta[name="description"]').content;
         document.querySelector('meta[property="og:locale"]').content = lang === 'en' ? 'en_US' : 'pt_BR';
         document.querySelector('meta[property="og:url"]').content = `${location.origin}${location.pathname}?lang=${lang}`;
+        const pdfLink = document.getElementById('download-resume-pdf');
+        pdfLink.href = lang === 'en' ? 'curriculo-moises-filho-en.pdf' : 'curriculo-moises-filho-pt.pdf';
+        pdfLink.download = lang === 'en' ? 'Moises-Filho-Resume-EN.pdf' : 'Moises-Filho-Curriculo-PT.pdf';
+        pdfLink.setAttribute('aria-label', lang === 'en' ? 'Download résumé as PDF' : 'Baixar currículo em PDF');
+        const printButton = document.getElementById('print-resume');
+        printButton.setAttribute('aria-label', lang === 'en' ? 'Print résumé' : 'Imprimir currículo');
+        printButton.title = lang === 'en' ? 'Print résumé' : 'Imprimir currículo';
       }
 
       function setFontSize(scale) {
@@ -94,6 +101,7 @@
 
       // Will apply zoom after DOM is ready (main element required)
       const requestedLang = new URLSearchParams(location.search).get('lang');
+      const shouldPrintOnLoad = new URLSearchParams(location.search).get('print') === '1';
       const savedLang = ['pt', 'en'].includes(requestedLang)
         ? requestedLang
         : localStorage.getItem('preferred-lang') || (navigator.language.startsWith('en') ? 'en' : 'pt');
@@ -151,12 +159,16 @@
           A+
         </button>
       </div>
-      <button class="pdf-btn" onclick="window.print()">
+      <a id="download-resume-pdf" class="pdf-btn" href="curriculo-moises-filho-pt.pdf" download="Moises-Filho-Curriculo-PT.pdf">
         <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
           <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
         </svg>
-        <span class="lang-pt">Baixar PDF</span>
-        <span class="lang-en">Download PDF</span>
+        <span>PDF</span>
+      </a>
+      <button id="print-resume" class="pdf-btn" onclick="window.print()" aria-label="Imprimir currículo" title="Imprimir currículo">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M6 9V3h12v6H6zm12 2h2a2 2 0 0 1 2 2v5h-4v3H6v-3H2v-5a2 2 0 0 1 2-2h2v2h12v-2zm-2 8v-5H8v5h8z" />
+        </svg>
       </button>
     </div>
 
@@ -213,12 +225,6 @@
           </span>
         </div>
       </header>
-
-      <div class="resume-downloads no-print" aria-label="Downloads do currículo">
-        <strong><span class="lang-pt">Baixar currículo:</span><span class="lang-en">Download résumé:</span></strong>
-        <a href="curriculo-moises-filho-pt.pdf" download="Moises-Filho-Curriculo-PT.pdf">PDF · PT</a>
-        <a href="curriculo-moises-filho-en.pdf" download="Moises-Filho-Resume-EN.pdf">PDF · EN</a>
-      </div>
 
       <!-- Resumo Profissional -->
       <section id="resumo">
@@ -744,6 +750,9 @@
           btn.classList.toggle('active', isActive);
           btn.setAttribute('aria-pressed', isActive);
         });
+        if (shouldPrintOnLoad) {
+          window.addEventListener('load', () => window.print(), { once: true });
+        }
       });
     </script>
   </body>

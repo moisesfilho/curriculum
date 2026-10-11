@@ -46,6 +46,9 @@ nav { margin-left: auto; font-size: .88rem; color: var(--muted); }
 .preferences button { border: 0; background: transparent; color: var(--muted); border-radius: 20px; padding: 5px 8px; font: 500 .7rem var(--mono); cursor: pointer; }
 .preferences button[aria-pressed='true'] { color: var(--text); background: var(--accent-soft); }
 .preferences .theme-toggle { font-size: 1rem; padding-inline: 10px; }
+.preferences .action-button { width: 31px; height: 30px; display: grid; place-items: center; border-radius: 20px; color: var(--muted); }
+.preferences .action-button:hover { background: var(--accent-soft); color: var(--accent); }
+.preferences .action-button svg { width: 15px; height: 15px; fill: currentColor; }
 .hero { min-height: 640px; padding: 88px 0 82px; position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 9%; align-items: center; }
 .hero::before { content: ''; position: absolute; z-index: -1; inset: 30px calc((1160px - 100vw) / 2) 0; background: var(--hero); }
 .hero-copy { max-width: 660px; }
