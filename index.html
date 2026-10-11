@@ -6,903 +6,128 @@
     <meta name="robots" content="noindex, nofollow" />
     <meta
       name="description"
-      content="Currículo de Moisés Alves Carneiro Filho — Líder e Gestor em TI com mais de 19 anos de experiência."
+      content="Moisés Filho — liderança técnica, arquitetura de software e engenharia de plataformas. Mais de 19 anos transformando desafios complexos em soluções confiáveis."
     />
-    <title>Moisés Filho - Curriculum</title>
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%230056b3'/><text x='50' y='50' font-family='Arial' font-weight='bold' font-size='45' fill='white' dominant-baseline='central' text-anchor='middle'>MF</text></svg>"
-    />
-    <link rel="stylesheet" href="index.css" />
+    <title>Moisés Filho — Tech Lead & Software Architect</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%230056b3'/><text x='50' y='50' font-family='Arial' font-weight='bold' font-size='45' fill='white' dominant-baseline='central' text-anchor='middle'>MF</text></svg>" />
+    <link rel="stylesheet" href="home.css" />
     <script>
-      function setLanguage(lang) {
-        document.documentElement.setAttribute('lang', lang);
-        localStorage.setItem('preferred-lang', lang);
-        document.querySelectorAll('.lang-btn').forEach((btn) => {
-          const isActive = btn.getAttribute('data-lang') === lang;
-          btn.classList.toggle('active', isActive);
-          btn.setAttribute('aria-pressed', isActive);
+      const initialLanguage = localStorage.getItem('preferred-lang') || (navigator.language.startsWith('en') ? 'en' : 'pt');
+      const initialTheme = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.lang = initialLanguage;
+      document.documentElement.dataset.theme = initialTheme;
+      function setLanguage(language) {
+        document.documentElement.lang = language;
+        localStorage.setItem('preferred-lang', language);
+        document.querySelectorAll('[data-language]').forEach((button) => {
+          button.setAttribute('aria-pressed', button.dataset.language === language);
         });
-        const titlePt = 'Moisés Filho - Curriculum';
-        const titleEn = 'Moisés Filho - Curriculum';
-        document.title = lang === 'pt' ? titlePt : titleEn;
       }
-
-      function setFontSize(scale) {
-        document.querySelector('main').style.zoom = scale + '%';
-        localStorage.setItem('font-scale', scale);
+      function toggleTheme() {
+        const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = theme;
+        localStorage.setItem('theme', theme);
       }
-
-      function increaseFont() {
-        const current = parseInt(localStorage.getItem('font-scale')) || 100;
-        const next = current >= 120 ? 100 : current + 10;
-        setFontSize(next);
-      }
-
-      function decreaseFont() {
-        const current = parseInt(localStorage.getItem('font-scale')) || 100;
-        const next = current <= 80 ? 100 : current - 10;
-        setFontSize(next);
-      }
-
-      function toggleDarkMode() {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        const newTheme = isDark ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-      }
-
-      // Will apply zoom after DOM is ready (main element required)
-      const savedLang = localStorage.getItem('preferred-lang') || (navigator.language.startsWith('en') ? 'en' : 'pt');
-      document.documentElement.setAttribute('lang', savedLang);
-
-      const savedTheme =
-        localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', savedTheme);
     </script>
   </head>
-
   <body>
-    <!-- Controles flutuantes (fora do main) -->
-    <div class="top-controls no-print">
-      <div class="lang-selector">
-        <button class="lang-btn" data-lang="pt" onclick="setLanguage('pt')" aria-pressed="true">PT</button>
-        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" aria-pressed="false">EN</button>
+    <header class="site-header">
+      <a class="wordmark" href="#inicio" aria-label="Moisés Filho, início">MF<span>.</span></a>
+      <nav aria-label="Navegação principal">
+        <a href="#sobre"><span class="lang-pt">Sobre</span><span class="lang-en">About</span></a>
+        <a href="#impacto"><span class="lang-pt">Impacto</span><span class="lang-en">Impact</span></a>
+        <a href="#projetos"><span class="lang-pt">Projetos</span><span class="lang-en">Projects</span></a>
+        <a class="nav-resume" href="curriculo.html"><span class="lang-pt">Currículo ↗</span><span class="lang-en">Résumé ↗</span></a>
+      </nav>
+      <div class="preferences" aria-label="Preferências">
+        <button type="button" data-language="pt" aria-label="Português" aria-pressed="true" onclick="setLanguage('pt')">PT</button>
+        <button type="button" data-language="en" aria-label="English" aria-pressed="false" onclick="setLanguage('en')">EN</button>
+        <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">◐</button>
       </div>
-      <button
-        class="pdf-btn"
-        onclick="toggleDarkMode()"
-        title="Toggle Dark Mode"
-        aria-label="Alternar Modo Escuro / Toggle Dark Mode"
-      >
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-          <path
-            d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"
-          />
-        </svg>
-      </button>
-      <div class="font-control">
-        <button
-          class="font-btn pdf-btn"
-          onclick="decreaseFont()"
-          title="Reduzir zoom / Zoom out"
-          aria-label="Reduzir zoom / Zoom out"
-        >
-          A−
-        </button>
-        <button
-          class="font-btn pdf-btn"
-          onclick="setFontSize(100)"
-          title="Zoom padrão / Default zoom"
-          aria-label="Zoom padrão / Default zoom"
-        >
-          A
-        </button>
-        <button
-          class="font-btn pdf-btn"
-          onclick="increaseFont()"
-          title="Aumentar zoom / Zoom in"
-          aria-label="Aumentar zoom / Zoom in"
-        >
-          A+
-        </button>
-      </div>
-      <button class="pdf-btn" onclick="window.print()">
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
-        </svg>
-        <span class="lang-pt">Baixar PDF</span>
-        <span class="lang-en">Download PDF</span>
-      </button>
-    </div>
+    </header>
 
     <main>
-      <!-- Cabeçalho -->
-      <header>
-        <h1>Moisés Alves Carneiro Filho</h1>
-        <p class="headline">
-          <span class="lang-pt">Tech Lead | Líder Técnico de Desenvolvimento de Software | Arquiteto de Software</span>
-          <span class="lang-en">Tech Lead | Software Development Technical Leader | Software Architect</span>
-        </p>
-        <div class="contact">
-          <span class="contact-item">
-            <svg aria-hidden="true" viewBox="0 0 24 24">
-              <path
-                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-              />
-            </svg>
-            <span class="lang-pt">Fortaleza/CE, Brasil</span>
-            <span class="lang-en">Fortaleza/CE, Brazil</span>
-          </span>
-          <span class="contact-item">
-            <svg aria-hidden="true" viewBox="0 0 24 24">
-              <path
-                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
-              />
-            </svg>
-            <a href="tel:+5585981188645">(85) 98118-8645</a>
-          </span>
-          <span class="contact-item">
-            <svg aria-hidden="true" viewBox="0 0 24 24">
-              <path
-                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-              />
-            </svg>
-            <a href="mailto:moises.son@gmail.com">moises.son@gmail.com</a>
-          </span>
-          <span class="contact-item">
-            <svg aria-hidden="true" viewBox="0 0 24 24">
-              <path
-                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-              />
-            </svg>
-            <a href="https://linkedin.com/in/moisesacfilho" target="_blank" rel="noopener">in/moisesacfilho</a>
-          </span>
-          <span class="contact-item">
-            <svg aria-hidden="true" viewBox="0 0 24 24">
-              <path
-                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56-.6 1.11-1.06 2.31-1.38 3.56zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.66-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"
-              />
-            </svg>
-            <span class="lang-pt">Inglês: Leitura C1 · Audição B2 · Conversação B1</span>
-            <span class="lang-en">English: Reading C1 · Listening B2 · Speaking B1</span>
-          </span>
+      <section class="hero" id="inicio">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span><span class="lang-pt">LIDERANÇA TÉCNICA · ARQUITETURA DE SOFTWARE</span><span class="lang-en">TECHNICAL LEADERSHIP · SOFTWARE ARCHITECTURE</span></p>
+          <h1><span class="lang-pt">Transformo desafios complexos em <em>software confiável.</em></span><span class="lang-en">I turn complex challenges into <em>reliable software.</em></span></h1>
+          <p class="hero-summary lang-pt">Sou Moisés Filho, líder técnico e arquiteto de software. Há mais de 19 anos conecto estratégia, arquitetura e execução para construir produtos resilientes e desenvolver equipes de engenharia.</p>
+          <p class="hero-summary lang-en">I’m Moisés Filho, a technical leader and software architect. For over 19 years, I’ve connected strategy, architecture, and execution to build resilient products and grow engineering teams.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#impacto"><span class="lang-pt">Conheça meu impacto</span><span class="lang-en">Explore my impact</span><span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="curriculo.html"><span class="lang-pt">Ver currículo</span><span class="lang-en">View résumé</span><span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-links">
+            <a href="https://linkedin.com/in/moisesacfilho" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://github.com/moisesfilho" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="mailto:moises.son@gmail.com">E-mail ↗</a>
+            <span>Fortaleza, Brasil · <span class="lang-pt">Remoto</span><span class="lang-en">Remote</span></span>
+          </div>
         </div>
-      </header>
-
-      <!-- Resumo Profissional -->
-      <section id="resumo">
-        <h2>
-          <span class="lang-pt">Resumo Profissional</span>
-          <span class="lang-en">Professional Summary</span>
-        </h2>
-        <p class="lang-pt">
-          Líder técnico e gestor de tecnologia com mais de 19 anos de experiência, sendo 15 anos em liderança de
-          equipes, desenvolvimento de software e arquitetura. Experiência recente na criação e manutenção de agentes de
-          IA para desenvolvimento de software, utilizando GitHub Copilot, OpenCode e modelos da OpenAI, como GPT.
-          Atuação na governança do ciclo de vida completo de aplicações, do planejamento e desenvolvimento aos testes,
-          revisão, segurança, build, deploy e operação. Experiência na definição de quality gates para qualidade de
-          código e segurança, além da estruturação de processos de Pull Requests com templates e validações obrigatórias
-          integradas ao CI/CD. Atuação hands-on em decisões arquiteturais, desenvolvimento web, integração entre
-          sistemas e construção de soluções escaláveis e resilientes, com Java/Spring Boot, Node.js/NestJS, C#/.NET,
-          Angular, RabbitMQ, Azure Service Bus, Redis, Azure, AWS, GCP e Kubernetes. Histórico de melhoria contínua de
-          práticas de engenharia, prevenção de bugs e evolução da cobertura de testes automatizados e de integração.
-        </p>
-        <p class="lang-en">
-          Technical leader and technology manager with over 19 years of experience, including 15 years leading teams,
-          developing software, and designing architectures. Recent experience creating and maintaining AI agents for
-          software development using GitHub Copilot, OpenCode, and OpenAI models such as GPT. Experience governing the
-          complete application lifecycle, from planning and development through testing, review, security, build,
-          deployment, and operations. Skilled in defining quality gates for code quality and security, as well as
-          structuring Pull Request processes with templates and mandatory CI/CD validations. Hands-on experience with
-          architectural decisions, web development, system integration, and scalable and resilient solutions using
-          Java/Spring Boot, Node.js/NestJS, C#/.NET, Angular, RabbitMQ, Azure Service Bus, Redis, Azure, AWS, GCP, and
-          Kubernetes. Track record of continuously improving engineering practices, preventing bugs, and increasing
-          automated and integration test coverage.
-        </p>
+        <aside class="hero-card" aria-label="Áreas de atuação">
+          <div class="card-topline"><span>FOCO</span><span>01 — 04</span></div>
+          <div class="focus-item"><span class="focus-number">01</span><span><strong><span class="lang-pt">Arquitetura</span><span class="lang-en">Architecture</span></strong><small><span class="lang-pt">Sistemas escaláveis e resilientes</span><span class="lang-en">Scalable, resilient systems</span></small></span></div>
+          <div class="focus-item"><span class="focus-number">02</span><span><strong><span class="lang-pt">Liderança</span><span class="lang-en">Leadership</span></strong><small><span class="lang-pt">Equipes e excelência em engenharia</span><span class="lang-en">Teams and engineering excellence</span></small></span></div>
+          <div class="focus-item"><span class="focus-number">03</span><span><strong>Cloud &amp; Platform</strong><small><span class="lang-pt">Automação, confiabilidade e escala</span><span class="lang-en">Automation, reliability, and scale</span></small></span></div>
+          <div class="focus-item"><span class="focus-number">04</span><span><strong>AI Engineering</strong><small><span class="lang-pt">IA integrada ao ciclo de desenvolvimento</span><span class="lang-en">AI embedded in software delivery</span></small></span></div>
+          <div class="card-footer"><span>TECH LEADERSHIP</span><span>FORTALEZA · BR</span></div>
+        </aside>
+        <div class="hero-index" aria-hidden="true">01 / 04</div>
       </section>
 
-      <!-- Competências Técnicas -->
-      <section id="competencias">
-        <h2>
-          <span class="lang-pt">Competências Técnicas</span>
-          <span class="lang-en">Technical Skills</span>
-        </h2>
-
-        <div class="skill-row">
-          <span class="skill-label">
-            <span class="lang-pt">Liderança Técnica</span>
-            <span class="lang-en">Technical Leadership</span>
-          </span>
-          <span class="skill-value">
-            <span class="lang-pt"
-              ><span>Arquitetura de Software</span> <span>Padrões de Projeto</span> <span>Microserviços</span>
-              <span>Sistemas Escaláveis</span> <span>Code Review</span> <span>Pull Requests</span>
-              <span>Mentoria Técnica</span> <span>Tomada de Decisão</span> <span>Gestão de Conflitos</span>
-              <span>Gestão de Stakeholders</span></span
-            >
-            <span class="lang-en"
-              ><span>Software Architecture</span> <span>Design Patterns</span> <span>Microservices</span>
-              <span>Scalable Systems</span> <span>Code Review</span> <span>Pull Requests</span>
-              <span>Technical Mentoring</span> <span>Decision-Making</span> <span>Conflict Management</span>
-              <span>Stakeholder Management</span></span
-            >
-          </span>
+      <section class="impact section-block" id="impacto">
+        <div class="section-heading"><p class="eyebrow">IMPACTO EM ENGENHARIA</p><h2><span class="lang-pt">Resultados que melhoram<br />a forma de entregar.</span><span class="lang-en">Outcomes that improve<br />how teams deliver.</span></h2></div>
+        <div class="metrics">
+          <article class="metric"><strong>80<span>%+</span></strong><p><span class="lang-pt">Cobertura de testes alcançada em sistemas e iniciativas</span><span class="lang-en">Test coverage achieved across systems and initiatives</span></p></article>
+          <article class="metric"><strong>50<span>%+</span></strong><p><span class="lang-pt">Redução no tempo de implantação por automação</span><span class="lang-en">Deployment time reduction through automation</span></p></article>
+          <article class="metric"><strong>10<span>–30</span></strong><p><span class="lang-pt">Pessoas em equipes multidisciplinares coordenadas</span><span class="lang-en">People across multidisciplinary teams led</span></p></article>
+          <article class="metric"><strong>19<span>+</span></strong><p><span class="lang-pt">Anos construindo software; 15 em posições de liderança</span><span class="lang-en">Years building software; 15 in leadership roles</span></p></article>
         </div>
+        <p class="metric-note"><span class="lang-pt">Resultados consolidados a partir de diferentes experiências profissionais. <a href="curriculo.html">Ver contexto no currículo →</a></span><span class="lang-en">Outcomes consolidated across professional experiences. <a href="curriculo.html">See context in the résumé →</a></span></p>
+      </section>
 
-        <div class="skill-row">
-          <span class="skill-label">
-            <span class="lang-pt">Linguagens &amp; Frameworks</span>
-            <span class="lang-en">Languages &amp; Frameworks</span>
-          </span>
-          <span class="skill-value"
-            ><span>Java 8</span> <span>Spring Boot</span> <span>JSF</span> <span>Node.js (NestJS)</span>
-            <span>TypeScript</span> <span>C# (.NET Core)</span> <span>Angular</span> <span>React</span></span
-          >
-        </div>
-
-        <div class="skill-row">
-          <span class="skill-label">
-            <span class="lang-pt">Integração</span>
-            <span class="lang-en">Integration</span>
-          </span>
-          <span class="skill-value"
-            ><span>RabbitMQ</span> <span>Azure Service Bus</span> <span>Redis</span>
-            <span class="lang-pt">Arquitetura Event-Driven</span>
-            <span class="lang-en">Event-Driven Architecture</span>
-            <span class="lang-pt">Processamento Assíncrono</span>
-            <span class="lang-en">Asynchronous Processing</span> <span>SOAP/REST</span> <span>XML</span>
-            <span>JSON</span></span
-          >
-        </div>
-
-        <div class="skill-row">
-          <span class="skill-label">Cloud &amp; DevOps / SRE</span>
-          <span class="skill-value"
-            ><span>Microsoft Azure</span> <span>AWS</span> <span>Google Cloud Platform (GCP)</span>
-            <span>Kubernetes</span> <span>Helm</span> <span>Terraform</span> <span>Docker</span>
-            <span>GitHub Actions</span> <span>Jenkins</span> <span>Azure DevOps</span> <span>FinOps</span></span
-          >
-        </div>
-
-        <div class="skill-row">
-          <span class="skill-label">
-            <span class="lang-pt">Confiabilidade</span>
-            <span class="lang-en">Reliability</span>
-          </span>
-          <span class="skill-value">
-            <span class="lang-pt"
-              ><span>SLIs/SLOs</span> <span>Error Budgets</span> <span>Postmortem Blameless</span>
-              <span>Governança de Incidentes</span></span
-            >
-            <span class="lang-en"
-              ><span>SLIs/SLOs</span> <span>Error Budgets</span> <span>Blameless Postmortems</span>
-              <span>Incident Governance</span></span
-            >
-          </span>
-        </div>
-
-        <div class="skill-row">
-          <span class="skill-label">
-            <span class="lang-pt">Dados</span>
-            <span class="lang-en">Data</span>
-          </span>
-          <span class="skill-value"
-            ><span>SQL Server</span> <span>SQL Azure</span> <span>PostgreSQL</span> <span>Oracle</span>
-            <span>Azure Table Storage</span></span
-          >
-        </div>
-
-        <div class="skill-row">
-          <span class="skill-label">
-            <span class="lang-pt">Metodologias</span>
-            <span class="lang-en">Methodologies</span>
-          </span>
-          <span class="skill-value">
-            <span class="lang-pt"
-              ><span>Scrum</span> <span>Kanban</span> <span>DevOps/SRE</span> <span>Microserviços</span>
-              <span>CQRS</span></span
-            >
-            <span class="lang-en"
-              ><span>Scrum</span> <span>Kanban</span> <span>DevOps/SRE</span> <span>Microservices</span>
-              <span>CQRS</span></span
-            >
-          </span>
-        </div>
-
-        <div class="skill-row">
-          <span class="skill-label">
-            <span class="lang-pt">Qualidade &amp; Métodos</span>
-            <span class="lang-en">Quality &amp; Methods</span>
-          </span>
-          <span class="skill-value">
-            <span class="lang-pt"
-              ><span>Testes Automatizados</span> <span>Scrum</span> <span>Kanban</span> <span>CI/CD</span>
-              <span>Observabilidade</span> <span>Gestão de Incidentes</span> <span>Postmortems</span>
-              <span>Desenvolvimento de Software Assistido por IA</span> <span>Agentes de IA</span>
-              <span>GitHub Copilot</span> <span>OpenCode</span> <span>Modelos GPT/OpenAI</span>
-              <span>Quality Gates</span> <span>Segurança de Código</span> <span>Templates de Pull Request</span>
-              <span>Governança de CI/CD</span> <span>Testes de Integração</span></span
-            >
-            <span class="lang-en"
-              ><span>Automated Testing</span> <span>Scrum</span> <span>Kanban</span> <span>CI/CD</span>
-              <span>Observability</span> <span>Incident Management</span> <span>Postmortems</span>
-              <span>AI-Assisted Software Development</span> <span>AI Agents</span> <span>GitHub Copilot</span>
-              <span>OpenCode</span> <span>OpenAI GPT Models</span> <span>Quality Gates</span>
-              <span>Code Security</span> <span>Pull Request Templates</span> <span>CI/CD Governance</span>
-              <span>Integration Testing</span></span
-            >
-          </span>
+      <section class="approach section-block" id="sobre">
+        <div class="section-heading"><p class="eyebrow"><span class="lang-pt">COMO POSSO CONTRIBUIR</span><span class="lang-en">HOW I CAN CONTRIBUTE</span></p><h2><span class="lang-pt">Liderança que aproxima<br />visão e execução.</span><span class="lang-en">Leadership that connects<br />vision and execution.</span></h2></div>
+        <div class="approach-content">
+          <p class="approach-lead lang-pt">Ajudo organizações a evoluir sistemas e práticas de engenharia sem perder de vista as pessoas, a operação e os objetivos do negócio.</p>
+          <p class="approach-lead lang-en">I help organizations evolve systems and engineering practices while keeping people, operations, and business goals in view.</p>
+          <div class="capability-list">
+            <article><span>01</span><div><h3><span class="lang-pt">Direção arquitetural</span><span class="lang-en">Architectural direction</span></h3><p><span class="lang-pt">Decisões técnicas pragmáticas para sistemas distribuídos, integrações e modernização de plataformas.</span><span class="lang-en">Pragmatic technical decisions for distributed systems, integrations, and platform modernization.</span></p></div></article>
+            <article><span>02</span><div><h3><span class="lang-pt">Excelência em engenharia</span><span class="lang-en">Engineering excellence</span></h3><p><span class="lang-pt">Qualidade incorporada ao fluxo: testes, revisão, CI/CD, segurança e observabilidade.</span><span class="lang-en">Quality built into delivery: testing, code review, CI/CD, security, and observability.</span></p></div></article>
+            <article><span>03</span><div><h3><span class="lang-pt">Liderança e alinhamento</span><span class="lang-en">Leadership and alignment</span></h3><p><span class="lang-pt">Times multidisciplinares conectados a prioridades claras, autonomia e evolução técnica.</span><span class="lang-en">Multidisciplinary teams aligned around clear priorities, autonomy, and technical growth.</span></p></div></article>
+            <article><span>04</span><div><h3><span class="lang-pt">Plataforma e entrega</span><span class="lang-en">Platform and delivery</span></h3><p><span class="lang-pt">Cloud, infraestrutura como código e automação para entregas mais rápidas e confiáveis.</span><span class="lang-en">Cloud, infrastructure as code, and automation for faster, more reliable delivery.</span></p></div></article>
+          </div>
         </div>
       </section>
 
-      <!-- Experiência Profissional -->
-      <section id="experiencia">
-        <h2>
-          <span class="lang-pt">Experiência Profissional</span>
-          <span class="lang-en">Professional Experience</span>
-        </h2>
-
-        <article class="job">
-          <div class="job-header">
-            <span class="job-title">
-              <span class="lang-pt">Coordenador e Líder Técnico</span>
-              <span class="lang-en">Coordinator and Tech Lead</span>
-            </span>
-            <span class="job-period">
-              <span class="lang-pt">Jun 2022 – Set 2026</span>
-              <span class="lang-en">Jun 2022 – Sep 2026</span>
-            </span>
-          </div>
-          <p class="job-company">Atos/Semantix</p>
-          <ul>
-            <li>
-              <span class="lang-pt"
-                ><strong>Liderança técnica:</strong> Coordenação de times multidisciplinares de Desenvolvimento, Design,
-                DevOps, Testes e Requisitos, conectando estratégia de negócio, execução técnica e desenvolvimento de
-                pessoas.</span
-              >
-              <span class="lang-en"
-                ><strong>Technical leadership:</strong> Coordination of multidisciplinary Development, Design, DevOps,
-                Testing, and Requirements teams, connecting business strategy, technical execution, and people
-                development.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>IA aplicada ao desenvolvimento:</strong> Criação, evolução e manutenção de agentes de IA para
-                apoiar o desenvolvimento de software, utilizando GitHub Copilot, OpenCode e modelos da OpenAI, como GPT,
-                integrados às práticas de engenharia.</span
-              >
-              <span class="lang-en"
-                ><strong>AI-assisted development:</strong> Created, evolved, and maintained AI agents to support software
-                development, using GitHub Copilot, OpenCode, and OpenAI models such as GPT, integrated into engineering
-                practices.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Ciclo de vida de aplicações:</strong> Governança e automação das etapas de planejamento,
-                desenvolvimento, testes, revisão, build, segurança, deploy e operação, conectando práticas de engenharia
-                ao fluxo de entrega contínua.</span
-              >
-              <span class="lang-en"
-                ><strong>Application lifecycle:</strong> Governance and automation of planning, development, testing,
-                review, build, security, deployment, and operations, connecting engineering practices to the continuous
-                delivery workflow.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Quality gates e segurança:</strong> Criação de quality gates com validações de qualidade de
-                código e segurança apoiadas por IA, contribuindo para a prevenção de bugs e a evolução da cobertura de
-                testes automatizados e de integração.</span
-              >
-              <span class="lang-en"
-                ><strong>Quality gates and security:</strong> Created quality gates with AI-assisted code quality and
-                security validations, contributing to bug prevention and increased automated and integration test
-                coverage.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Governança de Pull Requests:</strong> Criação e manutenção de templates de Pull Request com
-                critérios obrigatórios e validações integradas ao CI/CD para padronizar revisões, elevar a qualidade do
-                código e garantir maior controle antes da publicação.</span
-              >
-              <span class="lang-en"
-                ><strong>Pull Request governance:</strong> Created and maintained Pull Request templates with mandatory
-                criteria and CI/CD validations to standardize reviews, improve code quality, and provide stronger control
-                before release.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Qualidade e code review:</strong> Revisão de código por meio de pull requests, avaliando
-                qualidade, aderência aos padrões técnicos e prontidão para incorporação das alterações.</span
-              >
-              <span class="lang-en"
-                ><strong>Quality and code review:</strong> Code review through pull requests, assessing quality,
-                adherence to technical standards, and readiness to merge changes.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Arquitetura e backend:</strong> Definição e sustentação da arquitetura de ferramentas globais
-                utilizando Node.js, TypeScript e NestJS, com Redis para cache e gerenciamento de filas de
-                processamento.</span
-              >
-              <span class="lang-en"
-                ><strong>Architecture and backend:</strong> Definition and support of the global tools architecture
-                using Node.js, TypeScript, and NestJS, with Redis for caching and processing queue management.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Testes e observabilidade:</strong> Estratégia de testes automatizados que elevou a cobertura de
-                0% para mais de 80%, combinada à adoção de práticas de confiabilidade, monitoramento e métricas de
-                sistemas críticos.</span
-              >
-              <span class="lang-en"
-                ><strong>Testing and observability:</strong> Automated testing strategy that raised coverage from 0% to
-                over 80%, combined with reliability practices, monitoring, and metrics for critical systems.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Processos ágeis:</strong> Revisão e implantação do processo Scrum, elevando a previsibilidade
-                das entregas e incentivando a divisão de demandas complexas em partes menores.</span
-              >
-              <span class="lang-en"
-                ><strong>Agile processes:</strong> Review and implementation of the Scrum process, increasing delivery
-                predictability and encouraging the breakdown of complex demands into smaller parts.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>DevOps e automação:</strong> Automação completa do processo de deploy com GitHub Actions,
-                Kubernetes, Helm e Terraform, reduzindo o tempo de implantação em mais de 50%.</span
-              >
-              <span class="lang-en"
-                ><strong>DevOps and automation:</strong> Full deployment process automation using GitHub Actions,
-                Kubernetes, Helm, and Terraform, reducing deployment time by more than 50%.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Cloud e migração:</strong> Migração de um sistema de produção do Azure para o Google Cloud
-                Platform (GCP), utilizando Terraform para automação da infraestrutura e GitHub Actions para controle do
-                CI/CD, builds e publicação da aplicação.</span
-              >
-              <span class="lang-en"
-                ><strong>Cloud and migration:</strong> Migrated a production system from Azure to Google Cloud Platform
-                (GCP), using Terraform for infrastructure automation and GitHub Actions to manage CI/CD, builds, and
-                application releases.</span
-              >
-            </li>
-          </ul>
-          <p class="job-team">
-            <span class="lang-pt">Tamanho do time: 10 a 30 pessoas</span>
-            <span class="lang-en">Team size: 10 to 30 people</span>
-          </p>
-        </article>
-
-        <article class="job">
-          <div class="job-header">
-            <span class="job-title">
-              <span class="lang-pt">Líder Técnico</span>
-              <span class="lang-en">Tech Lead</span>
-            </span>
-            <span class="job-period">
-              <span class="lang-pt">Abr 2021 – Mai 2022</span>
-              <span class="lang-en">Apr 2021 – May 2022</span>
-            </span>
-          </div>
-          <p class="job-company">JBQ Global (Pague Menos)</p>
-          <ul>
-            <li>
-              <span class="lang-pt"
-                ><strong>Cloud e operação:</strong> Orquestração de ambientes Kubernetes críticos em AWS com deploys
-                automatizados via Azure DevOps, garantindo alta disponibilidade e resiliência.</span
-              >
-              <span class="lang-en"
-                ><strong>Cloud and operations:</strong> Orchestration of critical Kubernetes environments on AWS with
-                automated deployments through Azure DevOps, ensuring high availability and resilience.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Incidentes e produção:</strong> Condução do time técnico durante a estabilização e entrada em
-                produção de um produto altamente crítico em fase de rollout.</span
-              >
-              <span class="lang-en"
-                ><strong>Incidents and production:</strong> Led the technical team through the stabilization and
-                production rollout of a highly critical retail product.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Integração de sistemas:</strong> Desenvolvimento e coordenação de integrações complexas entre
-                plataforma de e-commerce e sistemas legados utilizando C#/.NET Core.</span
-              >
-              <span class="lang-en"
-                ><strong>System integration:</strong> Developed and coordinated complex integrations between an
-                e-commerce platform and legacy systems using C#/.NET Core.</span
-              >
-            </li>
-          </ul>
-          <p class="job-team">
-            <span class="lang-pt">Tamanho do time: 5 a 10 pessoas</span>
-            <span class="lang-en">Team size: 5 to 10 people</span>
-          </p>
-        </article>
-
-        <article class="job">
-          <div class="job-header">
-            <span class="job-title">
-              <span class="lang-pt">Líder Técnico e Arquiteto de Software</span>
-              <span class="lang-en">Tech Lead and Software Architect</span>
-            </span>
-            <span class="job-period">
-              <span class="lang-pt">Jan 2018 – Abr 2021</span>
-              <span class="lang-en">Jan 2018 – Apr 2021</span>
-            </span>
-          </div>
-          <p class="job-company">Secretaria da Fazenda do Ceará (SEFAZ-CE)</p>
-          <ul>
-            <li>
-              <span class="lang-pt"
-                ><strong>Sistema crítico:</strong> Liderança técnica no sistema de trânsito de mercadorias, responsável
-                pelo processamento e análise automatizada de ações fiscais do Estado do Ceará.</span
-              >
-              <span class="lang-en"
-                ><strong>Mission-critical system:</strong> Technical leadership for the goods-in-transit system,
-                responsible for the automated processing and analysis of tax actions in Ceará.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Processamento assíncrono:</strong> Definição da arquitetura baseada em RabbitMQ para processar
-                de forma assíncrona as ações fiscais do sistema.</span
-              >
-              <span class="lang-en"
-                ><strong>Asynchronous processing:</strong> Definition of the RabbitMQ-based architecture for the
-                asynchronous processing of the system's tax actions.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Java e arquitetura:</strong> Atuação em projeto Java 8 com Spring Boot, JSF e Angular, além da
-                definição de padrões arquiteturais para os projetos da Secretaria.</span
-              >
-              <span class="lang-en"
-                ><strong>Java and architecture:</strong> Worked on a Java 8 project with Spring Boot, JSF, and Angular,
-                while defining architectural standards for the department's projects.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Qualidade e modernização:</strong> Revisão arquitetural completa que reduziu em mais de 50% as
-                reclamações relacionadas a falhas operacionais.</span
-              >
-              <span class="lang-en"
-                ><strong>Quality and modernization:</strong> Full architectural review that reduced operational-failure
-                complaints by more than 50%.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>DevOps e testes:</strong> Implantação de CI via Jenkins e orquestração de containers em
-                OpenShift, elevando a cobertura de testes automatizados para mais de 80%.</span
-              >
-              <span class="lang-en"
-                ><strong>DevOps and testing:</strong> Implemented CI with Jenkins and container orchestration with
-                OpenShift, raising automated test coverage to over 80%.</span
-              >
-            </li>
-          </ul>
-          <p class="job-team">
-            <span class="lang-pt">Tamanho do time: 5 a 10 pessoas</span>
-            <span class="lang-en">Team size: 5 to 10 people</span>
-          </p>
-        </article>
-
-        <article class="job">
-          <div class="job-header">
-            <span class="job-title">
-              <span class="lang-pt">Gerente de Projetos e Arquiteto de Software</span>
-              <span class="lang-en">Project Manager and Software Architect</span>
-            </span>
-            <span class="job-period">
-              <span class="lang-pt">Dez 2007 – Jan 2018</span>
-              <span class="lang-en">Dec 2007 – Jan 2018</span>
-            </span>
-          </div>
-          <p class="job-company">ND Engenharia e Software</p>
-          <ul>
-            <li>
-              <span class="lang-pt"
-                ><strong>Liderança e evolução:</strong> Evolução profissional de desenvolvedor a Gerente de Projetos e
-                Arquiteto de Software, liderando equipes, entregas e decisões técnicas estratégicas.</span
-              >
-              <span class="lang-en"
-                ><strong>Leadership and growth:</strong> Career progression from developer to Project Manager and
-                Software Architect, leading teams, deliveries, and strategic technical decisions.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Arquitetura cloud:</strong> Arquitetura e desenvolvimento do sistema Pulse Saúde, plataforma
-                cloud que fornece resultados online para milhares de clientes em todo o Brasil.</span
-              >
-              <span class="lang-en"
-                ><strong>Cloud architecture:</strong> Architecture and development of the Pulse Saúde system, a cloud
-                platform providing online medical results to thousands of customers across Brazil.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Processamento assíncrono:</strong> Utilização do Azure Service Bus para processamento
-                assíncrono dos resultados de exames, garantindo agilidade e confiabilidade na entrega.</span
-              >
-              <span class="lang-en"
-                ><strong>Asynchronous processing:</strong> Used Azure Service Bus for asynchronous processing of medical
-                examination results, ensuring fast and reliable delivery.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Armazenamento e escalabilidade:</strong> Utilização combinada de Azure Table Storage e SQL
-                Azure, compondo uma arquitetura híbrida de armazenamento conforme as necessidades da aplicação.</span
-              >
-              <span class="lang-en"
-                ><strong>Storage and scalability:</strong> Combined Azure Table Storage and SQL Azure, creating a hybrid
-                storage architecture according to the application's needs.</span
-              >
-            </li>
-            <li>
-              <span class="lang-pt"
-                ><strong>Resiliência e integração:</strong> Definição de arquitetura resiliente em Microsoft Azure e
-                modernização de sistemas legados com integrações SOAP/REST, XML e JSON.</span
-              >
-              <span class="lang-en"
-                ><strong>Resilience and integration:</strong> Designed resilient architecture on Microsoft Azure and
-                modernized legacy systems through SOAP/REST, XML, and JSON integrations.</span
-              >
-            </li>
-          </ul>
-          <p class="job-team">
-            <span class="lang-pt">Tamanho do time: 5 a 10 pessoas</span>
-            <span class="lang-en">Team size: 5 to 10 people</span>
-          </p>
-        </article>
-      </section>
-
-      <!-- Projetos Selecionados / Selected Projects -->
-      <section id="projetos">
-        <h2>
-          <span class="lang-pt">Projetos Técnicos Selecionados</span>
-          <span class="lang-en">Selected Technical Projects</span>
-        </h2>
-
-        <article class="job">
-          <div class="job-header">
-            <span class="job-title">
-              <span class="lang-pt">tab5-os</span>
-              <span class="lang-en">tab5-os</span>
-            </span>
-            <span class="job-period">
-              <a href="https://github.com/moisesfilho/tab5-os" target="_blank" rel="noopener"
-                >github.com/moisesfilho/tab5-os</a
-              >
-            </span>
-          </div>
-          <p style="text-align: justify; margin-top: 0.3rem; color: var(--color-text-muted)">
-            <span class="lang-pt"
-              >Prova de conceito de sistema operacional para o M5Stack Tab5, baseado em ESP32-P4, com teclado virtual em
-              LVGL, rotação orientada por IMU, barra superior com relógio RTC e temas claro e escuro.</span
-            >
-            <span class="lang-en"
-              >Proof of concept for an operating system for the M5Stack Tab5, based on ESP32-P4, featuring an LVGL
-              virtual keyboard, IMU-based rotation, a top bar with an RTC clock, and light and dark themes.</span
-            >
-          </p>
-        </article>
-
-        <article class="job">
-          <div class="job-header">
-            <span class="job-title">
-              <span class="lang-pt">Agent Toolkit</span>
-              <span class="lang-en">Agent Toolkit</span>
-            </span>
-            <span class="job-period">
-              <a href="https://github.com/moisesfilho/agent-toolkit" target="_blank" rel="noopener"
-                >github.com/moisesfilho/agent-toolkit</a
-              >
-            </span>
-          </div>
-          <p style="text-align: justify; margin-top: 0.3rem; color: var(--color-text-muted)">
-            <span class="lang-pt"
-              >Coleção portátil de agentes de IA, skills reutilizáveis, workflows de desenvolvimento, templates e
-              documentação para diferentes ferramentas de desenvolvimento assistido por IA.</span
-            >
-            <span class="lang-en"
-              >Portable collection of AI agents, reusable skills, development workflows, templates, and documentation
-              for multiple AI coding tools.</span
-            >
-          </p>
-        </article>
-
-        <article class="job">
-          <div class="job-header">
-            <span class="job-title">
-              <span class="lang-pt">Shelloma (CLI)</span>
-              <span class="lang-en">Shelloma (CLI)</span>
-            </span>
-            <span class="job-period">
-              <a href="https://github.com/moisesfilho/shelloma" target="_blank" rel="noopener"
-                >github.com/moisesfilho/shelloma</a
-              >
-            </span>
-          </div>
-          <p style="text-align: justify; margin-top: 0.3rem; color: var(--color-text-muted)">
-            <span class="lang-pt"
-              >Ferramenta de linha de comando (CLI) em Go que traduz linguagem natural em comandos de terminal usando
-              Ollama localmente para garantir a privacidade dos dados. Possui suporte a execução multi-etapas, regras
-              customizadas e proteção contra comandos perigosos.</span
-            >
-            <span class="lang-en"
-              >Command-line interface (CLI) tool in Go that translates natural language into terminal commands using
-              local Ollama to ensure data privacy. It features multi-step execution, custom rules, and safety protection
-              against dangerous commands.</span
-            >
-          </p>
-        </article>
-
-        <article class="job">
-          <div class="job-header">
-            <span class="job-title">
-              <span class="lang-pt">gmail-cli</span>
-              <span class="lang-en">gmail-cli</span>
-            </span>
-            <span class="job-period">
-              <a href="https://github.com/moisesfilho/gmail-cli" target="_blank" rel="noopener"
-                >github.com/moisesfilho/gmail-cli</a
-              >
-            </span>
-          </div>
-          <p style="text-align: justify; margin-top: 0.3rem; color: var(--color-text-muted)">
-            <span class="lang-pt"
-              >CLI em Python para gerenciar e-mails, labels, rascunhos e anexos do Gmail direto do terminal, com
-              autenticação OAuth 2.0, operações em lote e classificação por IA via provedores LLM (Ollama local, OpenAI,
-              Gemini e OpenCode Go). Inclui comando em linguagem natural, exportação de e-mails para IA/RAG (JSON, JSONL
-              e Markdown) e cobertura de testes de 100%.</span
-            >
-            <span class="lang-en"
-              >Python CLI to manage Gmail emails, labels, drafts, and attachments straight from the terminal, featuring
-              OAuth 2.0 authentication, batch operations, and AI classification via LLM providers (local Ollama, OpenAI,
-              Gemini, and OpenCode Go). Includes a natural language command, AI/RAG email export (JSON, JSONL, and
-              Markdown), and 100% test coverage.</span
-            >
-          </p>
-        </article>
-
-        <div class="project-secondary">
-          <h3>
-            <span class="lang-pt">Outros projetos</span>
-            <span class="lang-en">Other projects</span>
-          </h3>
-          <ul class="project-secondary-list">
-            <li>
-              <a href="https://github.com/moisesfilho/copa" target="_blank" rel="noopener">Copados 2026 (PWA)</a>
-              <span class="lang-pt">Aplicação Angular/PWA com API da FIFA.</span>
-              <span class="lang-en">Angular/PWA application using the FIFA API.</span>
-            </li>
-            <li>
-              <a href="https://github.com/moisesfilho/whatsapp-cli" target="_blank" rel="noopener">whatsapp-cli</a>
-              <span class="lang-pt">CLI Node.js para automação de mensagens via WhatsApp.</span>
-              <span class="lang-en">Node.js CLI for WhatsApp messaging automation.</span>
-            </li>
-            <li>
-              <a href="https://github.com/moisesfilho/linkedin-cli" target="_blank" rel="noopener">linkedin-cli</a>
-              <span class="lang-pt">CLI Python para publicação e gestão de posts no LinkedIn.</span>
-              <span class="lang-en">Python CLI for publishing and managing LinkedIn posts.</span>
-            </li>
-          </ul>
+      <section class="projects section-block" id="projetos">
+        <div class="section-heading"><p class="eyebrow"><span class="lang-pt">TRABALHO EM DESTAQUE</span><span class="lang-en">SELECTED WORK</span></p><h2><span class="lang-pt">Prática, além da estratégia.</span><span class="lang-en">Hands-on, beyond strategy.</span></h2></div>
+        <div class="project-grid">
+          <article class="project-card"><div class="project-meta"><span>HARDWARE · EMBEDDED</span><span>↗</span></div><h3>tab5-os</h3><p><span class="lang-pt">Sistema operacional modular para M5Stack Tab5 com ESP32-P4, interface LVGL, rotação por IMU e suporte a temas.</span><span class="lang-en">Modular operating system for M5Stack Tab5 with ESP32-P4, LVGL interface, IMU-based rotation, and theme support.</span></p><a href="https://github.com/moisesfilho/tab5-os" target="_blank" rel="noopener"><span class="lang-pt">Explorar repositório</span><span class="lang-en">Explore repository</span> ↗</a></article>
+          <article class="project-card"><div class="project-meta"><span>AI · DEVELOPER EXPERIENCE</span><span>↗</span></div><h3>Agent Toolkit</h3><p><span class="lang-pt">Agentes, skills e workflows portáteis para estruturar desenvolvimento assistido por IA em diferentes ferramentas.</span><span class="lang-en">Portable agents, skills, and workflows for AI-assisted development across different tools.</span></p><a href="https://github.com/moisesfilho/agent-toolkit" target="_blank" rel="noopener"><span class="lang-pt">Explorar repositório</span><span class="lang-en">Explore repository</span> ↗</a></article>
+          <article class="project-card"><div class="project-meta"><span>GO · LOCAL AI</span><span>↗</span></div><h3>Shelloma</h3><p><span class="lang-pt">CLI que traduz linguagem natural em comandos de terminal usando modelos locais, com regras e execução em múltiplas etapas.</span><span class="lang-en">CLI that translates natural language into terminal commands using local models, custom rules, and multi-step execution.</span></p><a href="https://github.com/moisesfilho/shelloma" target="_blank" rel="noopener"><span class="lang-pt">Explorar repositório</span><span class="lang-en">Explore repository</span> ↗</a></article>
         </div>
       </section>
 
-      <!-- Formação Acadêmica -->
-      <section id="formacao">
-        <h2>
-          <span class="lang-pt">Formação Acadêmica</span>
-          <span class="lang-en">Education</span>
-        </h2>
-        <div class="edu-item">
-          <strong>
-            <span class="lang-pt">Graduação em Sistemas de Informação</span>
-            <span class="lang-en">Bachelor's Degree in Information Systems</span> </strong
-          ><br />
-          <span>
-            <span class="lang-pt">Faculdade 7 de Setembro — Concluído em 2008</span>
-            <span class="lang-en">Faculdade 7 de Setembro — Completed in 2008</span>
-          </span>
+      <section class="experience section-block">
+        <div class="section-heading"><p class="eyebrow"><span class="lang-pt">TRAJETÓRIA</span><span class="lang-en">EXPERIENCE</span></p><h2><span class="lang-pt">Experiência em contextos<br />de alta responsabilidade.</span><span class="lang-en">Experience in high-<br />responsibility environments.</span></h2></div>
+        <div class="timeline">
+          <article><span class="timeline-date">2022 — 2026</span><div><h3>Atos / Semantix</h3><p><span class="lang-pt">Coordenação e liderança técnica · Plataformas, cloud, qualidade e práticas de engenharia assistidas por IA.</span><span class="lang-en">Coordination and technical leadership · Platforms, cloud, quality, and AI-assisted engineering practices.</span></p></div></article>
+          <article><span class="timeline-date">2021 — 2022</span><div><h3>JBQ Global · Pague Menos</h3><p><span class="lang-pt">Liderança técnica · Integrações, Kubernetes e estabilização de produto crítico.</span><span class="lang-en">Technical leadership · Integrations, Kubernetes, and stabilization of a critical product.</span></p></div></article>
+          <article><span class="timeline-date">2018 — 2021</span><div><h3>SEFAZ-CE</h3><p><span class="lang-pt">Liderança técnica e arquitetura · Sistemas fiscais críticos, processamento assíncrono e modernização.</span><span class="lang-en">Technical leadership and architecture · Mission-critical tax systems, asynchronous processing, and modernization.</span></p></div></article>
+          <article><span class="timeline-date">2007 — 2018</span><div><h3>ND Engenharia e Software</h3><p><span class="lang-pt">Gerência de projetos e arquitetura · Produtos cloud, integração e evolução de sistemas.</span><span class="lang-en">Project management and architecture · Cloud products, integrations, and system evolution.</span></p></div></article>
+          <a class="timeline-link" href="curriculo.html"><span class="lang-pt">Ver experiência completa e formação</span><span class="lang-en">View full experience and education</span> ↗</a>
         </div>
       </section>
 
-      <!-- Aperfeiçoamento Recente -->
-      <section id="aperfeicoamento">
-        <h2>
-          <span class="lang-pt">Aperfeiçoamento Recente</span>
-          <span class="lang-en">Recent Professional Development</span>
-        </h2>
-        <div class="cert-item">
-          <strong>
-            <span class="lang-pt">License to Manager – Formação de Gestores</span>
-            <span class="lang-en">License to Manager – Leadership Training</span>
-          </strong>
-          <span> | Atos, 2024</span>
-        </div>
+      <section class="contact-cta">
+        <p class="eyebrow"><span class="lang-pt">PRÓXIMO DESAFIO</span><span class="lang-en">WHAT’S NEXT</span></p>
+        <h2><span class="lang-pt">Vamos construir algo<br />que valha a pena.</span><span class="lang-en">Let’s build something<br />that matters.</span></h2>
+        <a class="button button-light" href="mailto:moises.son@gmail.com"><span class="lang-pt">Entre em contato</span><span class="lang-en">Get in touch</span> ↗</a>
+        <span class="cta-mark" aria-hidden="true">MF.</span>
       </section>
-
-      <!-- Rodapé / Badges Sociais -->
-      <footer class="no-print social-footer">
-        <!-- GitHub Badge Customizado -->
-        <a href="https://github.com/moisesfilho" target="_blank" rel="noopener" class="social-badge banner-github">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-            />
-          </svg>
-          <span>@moisesfilho</span>
-        </a>
-
-        <!-- LinkedIn Badge Customizado -->
-        <a
-          href="https://linkedin.com/in/moisesacfilho"
-          target="_blank"
-          rel="noopener"
-          class="social-badge banner-linkedin"
-        >
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-            />
-          </svg>
-          <span>in/moisesacfilho</span>
-        </a>
-
-        <!-- Instagram Badge Customizado -->
-        <a
-          href="https://instagram.com/moises.acfilho"
-          target="_blank"
-          rel="noopener"
-          class="social-badge banner-instagram"
-        >
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm3.98-10.869a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"
-            />
-          </svg>
-          <span>@moises.acfilho</span>
-        </a>
-      </footer>
     </main>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const savedFont = localStorage.getItem('font-scale') || '100';
-        document.querySelector('main').style.zoom = savedFont + '%';
-        const activeLang = document.documentElement.getAttribute('lang') || 'pt';
-        document.querySelectorAll('.lang-btn').forEach((btn) => {
-          const isActive = btn.getAttribute('data-lang') === activeLang;
-          btn.classList.toggle('active', isActive);
-          btn.setAttribute('aria-pressed', isActive);
-        });
-        const titlePt = 'Moisés Filho - Curriculum';
-        const titleEn = 'Moisés Filho - Curriculum';
-        document.title = activeLang === 'pt' ? titlePt : titleEn;
-      });
-    </script>
+    <footer class="site-footer"><a class="wordmark" href="#inicio">MF<span>.</span></a><p>© 2026 Moisés Filho · <span class="lang-pt">Feito com intenção em Fortaleza.</span><span class="lang-en">Made with intention in Fortaleza.</span></p><a href="curriculo.html"><span class="lang-pt">Currículo completo</span><span class="lang-en">Full résumé</span> ↗</a></footer>
+    <script>setLanguage(initialLanguage);</script>
   </body>
 </html>

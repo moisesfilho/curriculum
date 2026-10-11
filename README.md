@@ -1,6 +1,6 @@
-# Currículo Digital - Moisés Alves Carneiro Filho
+# Portfólio Profissional - Moisés Alves Carneiro Filho
 
-Página web estática que hospeda meu currículo profissional. O projeto foi desenvolvido com foco em alta performance, acessibilidade e escaneabilidade — tanto para leitura humana rápida quanto para robôs e ferramentas automatizadas de recrutamento (ATS).
+Site profissional estático para apresentar minha atuação em liderança técnica e arquitetura de software. A página inicial destaca posicionamento, impacto, projetos e experiência; o currículo detalhado permanece disponível em `curriculo.html`, com opção de exportação para PDF.
 
 🔗 **URL Pública:** [https://www.moisesfilho.dev.br](https://www.moisesfilho.dev.br)
 
@@ -8,15 +8,15 @@ Página web estática que hospeda meu currículo profissional. O projeto foi des
 
 O projeto é focado no essencialismo e não utiliza frameworks pesados, garantindo um carregamento ultrarrápido:
 
-- **HTML5 Semântico:** Estrutura sólida (`<header>`, `<main>`, `<article>`) para facilitar a interpretação do conteúdo por sistemas de leitura e indexadores.
-- **CSS3:** Estilização moderna e responsiva utilizando Variáveis (Custom Properties) para gerenciar o Design System e a alternância de temas.
-- **Vanilla JavaScript:** Scripts puros e leves injetados diretamente no documento para gerenciar o estado da aplicação instantaneamente (prevenindo _FOUC - Flash of Unstyled Content_).
+- **HTML5 Semântico:** Estrutura acessível e responsiva, sem dependência de framework.
+- **CSS3:** Folhas de estilo independentes para a landing page e o currículo, com tema claro/escuro.
+- **Vanilla JavaScript:** Alternância de idioma e tema, com preferências persistidas no navegador.
 
 ## ✨ Funcionalidades
 
-- 🌍 **Internacionalização (PT/EN):** O currículo possui texto fluido em Português e Inglês. A alternância entre os idiomas é feita de forma instantânea na interface, sem necessidade de recarregar a página. A escolha do usuário é persistida no `localStorage` do navegador.
-- 🌓 **Dark Mode (Modo Escuro):** O layout alterna dinamicamente entre o tema claro e escuro. O sistema detecta automaticamente a preferência nativa do sistema operacional (`prefers-color-scheme`) como padrão e permite a troca manual via botão na interface, também salvando o estado no `localStorage`.
-- 📄 **Baixar PDF (Otimizado para ATS):** Um recurso integrado de exportação utilizando a funcionalidade de impressão do navegador (`window.print()`). Por meio da diretiva `@media print` no CSS, a interface esconde ativamente elementos não imprimíveis (como botões e seletores) e gera um PDF estruturado e limpo contendo apenas o idioma ativo. Esse formato é extremamente favorável para análise automatizada por plataformas ATS (_Applicant Tracking Systems_).
+- 🌍 **Português e inglês:** A landing page e o currículo permitem alternância de idioma, mantendo a escolha no `localStorage`.
+- 🌓 **Tema claro e escuro:** Detecta a preferência do sistema e permite alternância manual.
+- 📄 **Currículo para impressão/PDF:** `curriculo.html` oferece currículo completo nos dois idiomas e usa a impressão do navegador para exportar o idioma ativo.
 
 ## 📐 Padrões de Código e Formatação
 
@@ -32,5 +32,5 @@ A publicação do currículo ocorre de maneira contínua e totalmente automatiza
 
 1. O código-fonte principal fica armazenado na branch `main`.
 2. Um pipeline do **GitHub Actions** (configurado no arquivo `.github/workflows/static.yml`) é automaticamente disparado a cada `push`.
-3. O workflow faz o empacotamento e sobe os arquivos estáticos para o serviço **GitHub Pages**.
+3. O workflow publica os arquivos estáticos (`index.html`, `curriculo.html`, CSS e demais recursos) no **GitHub Pages**.
 4. O repositório está integrado com um domínio customizado (`moisesfilho.dev.br`), com roteamento DNS (`CNAME` e `A`/`AAAA` records) gerenciado de forma externa e certificado SSL (HTTPS) mantido ativamente pela plataforma.
