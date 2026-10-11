@@ -7,7 +7,7 @@ Site pessoal de curriculo estatico, publicado como frontend sem backend.
 | Caminho | Responsabilidade |
 | --- | --- |
 | `index.html` | Landing page profissional bilíngue, com posicionamento, métricas atribuídas, projetos, casos técnicos e trajetória. |
-| `home.css` | Tema, layout responsivo e apresentação visual da landing page e estudos de caso. |
+| `home.css` | Tema, layout responsivo, seções editoriais em duas colunas e apresentação dos estudos de caso em cards. |
 | `curriculo.html` | Currículo detalhado bilíngue, com áreas de atuação resumidas, controles de tema/idioma, impressão e links aos PDFs PT/EN. |
 | `curriculo-moises-filho-pt.pdf`, `curriculo-moises-filho-en.pdf` | Versões estáticas A4 do currículo para download em português e inglês. |
 | `index.css` | Tema, layout responsivo, impressão e apresentação visual do currículo detalhado. |
