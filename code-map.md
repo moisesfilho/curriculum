@@ -6,9 +6,9 @@ Site pessoal de curriculo estatico, publicado como frontend sem backend.
 
 | Caminho | Responsabilidade |
 | --- | --- |
-| `index.html` | Landing page profissional bilíngue, com posicionamento, resultados, projetos e trajetória. |
-| `home.css` | Tema, layout responsivo e apresentação visual da landing page. |
-| `curriculo.html` | Currículo detalhado bilíngue, com controles de tema, idioma e impressão/PDF. |
+| `index.html` | Landing page profissional bilíngue, com posicionamento, métricas atribuídas, projetos, casos técnicos e trajetória. |
+| `home.css` | Tema, layout responsivo e apresentação visual da landing page e estudos de caso. |
+| `curriculo.html` | Currículo detalhado bilíngue, com áreas de atuação resumidas, controles de tema, idioma e impressão/PDF. |
 | `index.css` | Tema, layout responsivo e apresentação visual do currículo detalhado. |
 | `CNAME` | Dominio usado na publicacao. |
 | `robots.txt` | Politica de indexacao do site. |

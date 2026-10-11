@@ -180,6 +180,12 @@ section {
   text-align: justify;
 }
 
+.skill-support {
+  margin-top: 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.84rem;
+}
+
 .skill-value > span:not(.lang-pt):not(.lang-en):not(:last-child)::after {
   content: ' ·';
 }
@@ -296,6 +302,10 @@ section {
   .skill-row {
     grid-template-columns: 1fr;
     gap: 0;
+  }
+
+  .skill-label {
+    white-space: normal;
   }
 
   .job-header {
