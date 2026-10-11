@@ -34,13 +34,36 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%230056b3'/><text x='50' y='50' font-family='Arial' font-weight='bold' font-size='45' fill='white' dominant-baseline='central' text-anchor='middle'>MF</text></svg>" />
     <link rel="stylesheet" href="home.css" />
     <script>
-      const initialLanguage = localStorage.getItem('preferred-lang') || (navigator.language.startsWith('en') ? 'en' : 'pt');
+      const requestedLanguage = new URLSearchParams(location.search).get('lang');
+      const initialLanguage = ['pt', 'en'].includes(requestedLanguage)
+        ? requestedLanguage
+        : localStorage.getItem('preferred-lang') || (navigator.language.startsWith('en') ? 'en' : 'pt');
       const initialTheme = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.lang = initialLanguage;
       document.documentElement.dataset.theme = initialTheme;
       function setLanguage(language) {
         document.documentElement.lang = language;
         localStorage.setItem('preferred-lang', language);
+        history.replaceState(null, '', `${location.pathname}?lang=${language}${location.hash}`);
+        document.querySelectorAll('.lang-pt').forEach((element) => {
+          element.lang = 'pt-BR';
+          element.hidden = language !== 'pt';
+        });
+        document.querySelectorAll('.lang-en').forEach((element) => {
+          element.lang = 'en';
+          element.hidden = language !== 'en';
+        });
+        const isEnglish = language === 'en';
+        document.title = isEnglish
+          ? 'Moisés Filho | Software Architect & Tech Lead'
+          : 'Moisés Filho | Arquiteto de Software & Tech Lead';
+        document.querySelector('meta[name="description"]').content = isEnglish
+          ? 'Moisés Filho — software architect and technical leader with 19+ years in distributed systems, cloud, and platform engineering.'
+          : 'Moisés Filho — arquiteto de software e líder técnico com mais de 19 anos em sistemas distribuídos, cloud e engenharia de plataformas.';
+        document.querySelector('meta[property="og:title"]').content = document.title;
+        document.querySelector('meta[property="og:description"]').content = document.querySelector('meta[name="description"]').content;
+        document.querySelector('meta[property="og:locale"]').content = isEnglish ? 'en_US' : 'pt_BR';
+        document.querySelector('meta[property="og:url"]').content = `${location.origin}${location.pathname}?lang=${language}`;
         document.querySelectorAll('[data-language]').forEach((button) => {
           button.setAttribute('aria-pressed', button.dataset.language === language);
         });
@@ -100,12 +123,12 @@
       <section class="impact section-block" id="impacto">
         <div class="section-heading"><p class="eyebrow">IMPACTO EM ENGENHARIA</p><h2><span class="lang-pt">Resultados que melhoram<br />a forma de entregar.</span><span class="lang-en">Outcomes that improve<br />how teams deliver.</span></h2></div>
         <div class="metrics">
-          <article class="metric"><strong>80<span>%+</span></strong><p><span class="lang-pt">Cobertura de testes · Atos/Semantix, 2022–2026</span><span class="lang-en">Test coverage · Atos/Semantix, 2022–2026</span></p></article>
+          <article class="metric"><strong>80<span>%+</span></strong><p><span class="lang-pt">Cobertura de 0% a mais de 80% · Atos/Semantix</span><span class="lang-en">Test coverage from 0% to over 80% · Atos/Semantix</span></p></article>
           <article class="metric"><strong>50<span>%+</span></strong><p><span class="lang-pt">Menos tempo de deploy · Atos/Semantix, 2022–2026</span><span class="lang-en">Less deployment time · Atos/Semantix, 2022–2026</span></p></article>
           <article class="metric"><strong>10<span>–30</span></strong><p><span class="lang-pt">Pessoas em equipes multidisciplinares coordenadas</span><span class="lang-en">People across multidisciplinary teams led</span></p></article>
           <article class="metric"><strong>19<span>+</span></strong><p><span class="lang-pt">Anos construindo software; 15 em posições de liderança</span><span class="lang-en">Years building software; 15 in leadership roles</span></p></article>
         </div>
-        <p class="metric-note"><span class="lang-pt">Métricas associadas às experiências indicadas. <a href="curriculo.html">Ver contexto e realizações →</a></span><span class="lang-en">Metrics are attributed to the experiences shown. <a href="curriculo.html">See full context and achievements →</a></span></p>
+        <p class="metric-note"><span class="lang-pt">Deploy: mais de 50% menos tempo (Atos/Semantix). Custos: redução superior a 50% na migração para GCP Autopilot. <a href="curriculo.html">Ver contexto e realizações →</a></span><span class="lang-en">Deployments: over 50% less time (Atos/Semantix). Infrastructure: over 50% lower costs after migration to GCP Autopilot. <a href="curriculo.html">See full context and achievements →</a></span></p>
       </section>
 
       <section class="approach section-block" id="sobre">
@@ -125,7 +148,7 @@
       <section class="projects section-block" id="projetos">
         <div class="section-heading"><p class="eyebrow"><span class="lang-pt">TRABALHO EM DESTAQUE</span><span class="lang-en">SELECTED WORK</span></p><h2><span class="lang-pt">Prática, além da estratégia.</span><span class="lang-en">Hands-on, beyond strategy.</span></h2></div>
         <div class="project-grid">
-          <article class="project-card"><div class="project-meta"><span>HARDWARE · EMBEDDED</span><span>↗</span></div><h3>tab5-os</h3><p><span class="lang-pt">SO modular para M5Stack Tab5 (ESP32-P4). O runtime WebAssembly WAMR isola apps; um Host ABI controlado expõe UI e hardware e um SDK permite criar e empacotar novos apps.</span><span class="lang-en">Modular OS for M5Stack Tab5 (ESP32-P4). The WebAssembly WAMR runtime isolates apps; a controlled Host ABI exposes UI and hardware, while an SDK supports building and packaging apps.</span></p><a href="https://github.com/moisesfilho/tab5-os" target="_blank" rel="noopener"><span class="lang-pt">Arquitetura e código</span><span class="lang-en">Architecture and code</span> ↗</a></article>
+          <article class="project-card"><div class="project-meta"><span>HARDWARE · EMBEDDED</span><span>↗</span></div><h3>tab5-os</h3><p><span class="lang-pt">Prova de conceito em evolução para M5Stack Tab5 (ESP32-P4). Já inclui runtime WAMR para isolamento de apps WebAssembly, permissões via Host ABI, pacotes instaláveis `.tab5pkg` e SDK para criar aplicações. Recursos e hardware suportados estão detalhados no repositório.</span><span class="lang-en">An evolving proof of concept for M5Stack Tab5 (ESP32-P4). It already includes WAMR runtime for WebAssembly app isolation, permissions through a Host ABI, installable `.tab5pkg` packages, and an app development SDK. Supported features and hardware are documented in the repository.</span></p><a href="https://github.com/moisesfilho/tab5-os" target="_blank" rel="noopener"><span class="lang-pt">Arquitetura e código</span><span class="lang-en">Architecture and code</span> ↗</a></article>
           <article class="project-card"><div class="project-meta"><span>AI · DEVELOPER EXPERIENCE</span><span>↗</span></div><h3>Agent Toolkit</h3><p><span class="lang-pt">Recursos portáveis entre ferramentas de IA: agentes, skills e workflows separados de adaptadores específicos, com foco em composição, inspeção e segurança.</span><span class="lang-en">AI resources portable across coding tools: agents, skills, and workflows separated from harness-specific adapters, designed for composability, inspection, and safety.</span></p><a href="https://github.com/moisesfilho/agent-toolkit" target="_blank" rel="noopener"><span class="lang-pt">Arquitetura e código</span><span class="lang-en">Architecture and code</span> ↗</a></article>
           <article class="project-card"><div class="project-meta"><span>GO · LOCAL AI</span><span>↗</span></div><h3>Shelloma</h3><p><span class="lang-pt">CLI que transforma linguagem natural em comandos com modelos locais. Regras configuráveis e fluxo de múltiplas etapas ajudam a revisar operações antes da execução.</span><span class="lang-en">CLI that turns natural language into commands with local models. Configurable rules and a multi-step flow help review operations before execution.</span></p><a href="https://github.com/moisesfilho/shelloma" target="_blank" rel="noopener"><span class="lang-pt">Arquitetura e código</span><span class="lang-en">Architecture and code</span> ↗</a></article>
           <article class="project-card"><div class="project-meta"><span>PYTHON · GMAIL API</span><span>↗</span></div><h3>gmail-cli</h3><p><span class="lang-pt">CLI para Gmail com OAuth 2.0, operações em lote e cobertura de testes de 100%. Combina integração com API externa e automação de e-mail a partir do terminal.</span><span class="lang-en">Gmail CLI with OAuth 2.0, batch operations, and 100% test coverage. Combines external API integration with email automation from the terminal.</span></p><a href="https://github.com/moisesfilho/gmail-cli" target="_blank" rel="noopener"><span class="lang-pt">Arquitetura e código</span><span class="lang-en">Architecture and code</span> ↗</a></article>

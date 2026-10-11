@@ -16,7 +16,7 @@ O projeto é focado no essencialismo e não utiliza frameworks pesados, garantin
 
 - 🌍 **Português e inglês:** A landing page e o currículo permitem alternância de idioma, mantendo a escolha no `localStorage`.
 - 🌓 **Tema claro e escuro:** Detecta a preferência do sistema e permite alternância manual.
-- 📄 **Currículo para impressão/PDF:** `curriculo.html` oferece currículo completo nos dois idiomas e usa a impressão do navegador para exportar o idioma ativo.
+- 📄 **Currículo em PDF:** `curriculo.html` oferece versões A4 em português e inglês para download, além de permitir imprimir a versão exibida no navegador.
 
 ## 📐 Padrões de Código e Formatação
 

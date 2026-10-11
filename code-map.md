@@ -8,8 +8,9 @@ Site pessoal de curriculo estatico, publicado como frontend sem backend.
 | --- | --- |
 | `index.html` | Landing page profissional bilíngue, com posicionamento, métricas atribuídas, projetos, casos técnicos e trajetória. |
 | `home.css` | Tema, layout responsivo e apresentação visual da landing page e estudos de caso. |
-| `curriculo.html` | Currículo detalhado bilíngue, com áreas de atuação resumidas, controles de tema, idioma e impressão/PDF. |
-| `index.css` | Tema, layout responsivo e apresentação visual do currículo detalhado. |
+| `curriculo.html` | Currículo detalhado bilíngue, com áreas de atuação resumidas, controles de tema/idioma, impressão e links aos PDFs PT/EN. |
+| `curriculo-moises-filho-pt.pdf`, `curriculo-moises-filho-en.pdf` | Versões estáticas A4 do currículo para download em português e inglês. |
+| `index.css` | Tema, layout responsivo, impressão e apresentação visual do currículo detalhado. |
 | `CNAME` | Dominio usado na publicacao. |
 | `robots.txt` | Politica de indexacao do site. |
 | `.github/` | Automacao de publicacao/qualidade. |

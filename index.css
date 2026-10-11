@@ -313,8 +313,10 @@ section {
   }
 
   .top-controls {
-    top: 0.4rem;
-    right: 0.4rem;
+    position: static;
+    width: calc(100% - 0.8rem);
+    margin: 0.4rem auto 0.8rem;
+    justify-content: center;
     gap: 0.3rem;
   }
 
@@ -325,6 +327,11 @@ section {
   .contact {
     justify-content: center;
     gap: 0.8rem;
+  }
+
+  .resume-downloads {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
@@ -375,6 +382,31 @@ section {
 
 [lang='en'] .lang-pt {
   display: none !important;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.resume-downloads {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.7rem;
+  margin: -0.3rem 0 1rem;
+  font-size: 0.8rem;
+}
+
+.resume-downloads a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.resume-downloads strong {
+  color: var(--color-text-muted);
+  font-size: inherit;
 }
 
 /* Top Controls Container (flutuante) */
@@ -573,4 +605,14 @@ section {
 
 [data-theme='dark'] .banner-instagram {
   background-image: linear-gradient(45deg, #c47625 0%, #b84f22 25%, #a81729 50%, #9c154b 75%, #850c5b 100%);
+}
+
+@media (max-width: 600px) {
+  .top-controls {
+    position: static;
+    width: calc(100% - 0.8rem);
+    margin: 0.4rem auto 0.8rem;
+    justify-content: center;
+    gap: 0.3rem;
+  }
 }

@@ -6,9 +6,33 @@
     <meta name="robots" content="noindex, nofollow" />
     <meta
       name="description"
-      content="Currículo de Moisés Alves Carneiro Filho — Líder e Gestor em TI com mais de 19 anos de experiência."
+      content="Currículo de Moisés Filho — arquiteto de software e líder técnico, com mais de 19 anos de experiência em arquitetura, cloud e engenharia de software."
     />
-    <title>Moisés Filho - Curriculum</title>
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Currículo | Moisés Filho — Tech Lead &amp; Software Architect" />
+    <meta property="og:description" content="Liderança técnica, arquitetura de software e resultados em cloud, qualidade e engenharia de plataformas." />
+    <meta property="og:url" content="https://www.moisesfilho.dev.br/curriculo.html" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://www.moisesfilho.dev.br/curriculo.html" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Moisés Alves Carneiro Filho",
+          "alternateName": "Moisés Filho",
+          "jobTitle": ["Software Architect", "Tech Lead"],
+          "url": "https://www.moisesfilho.dev.br/",
+          "sameAs": [
+            "https://linkedin.com/in/moisesacfilho",
+            "https://github.com/moisesfilho"
+          ]
+        }
+      }
+    </script>
+    <title>Currículo | Moisés Filho — Tech Lead &amp; Software Architect</title>
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%230056b3'/><text x='50' y='50' font-family='Arial' font-weight='bold' font-size='45' fill='white' dominant-baseline='central' text-anchor='middle'>MF</text></svg>"
@@ -18,14 +42,30 @@
       function setLanguage(lang) {
         document.documentElement.setAttribute('lang', lang);
         localStorage.setItem('preferred-lang', lang);
+        history.replaceState(null, '', `${location.pathname}?lang=${lang}${location.hash}`);
+        document.querySelectorAll('.lang-pt').forEach((element) => {
+          element.lang = 'pt-BR';
+          element.hidden = lang !== 'pt';
+        });
+        document.querySelectorAll('.lang-en').forEach((element) => {
+          element.lang = 'en';
+          element.hidden = lang !== 'en';
+        });
         document.querySelectorAll('.lang-btn').forEach((btn) => {
           const isActive = btn.getAttribute('data-lang') === lang;
           btn.classList.toggle('active', isActive);
           btn.setAttribute('aria-pressed', isActive);
         });
-        const titlePt = 'Moisés Filho - Curriculum';
-        const titleEn = 'Moisés Filho - Curriculum';
+        const titlePt = 'Currículo | Moisés Filho — Tech Lead & Software Architect';
+        const titleEn = 'Résumé | Moisés Filho — Tech Lead & Software Architect';
         document.title = lang === 'pt' ? titlePt : titleEn;
+        document.querySelector('meta[name="description"]').content = lang === 'en'
+          ? 'Moisés Filho résumé — software architect and technical leader with 19+ years of experience in architecture, cloud, and software engineering.'
+          : 'Currículo de Moisés Filho — arquiteto de software e líder técnico, com mais de 19 anos de experiência em arquitetura, cloud e engenharia de software.';
+        document.querySelector('meta[property="og:title"]').content = document.title;
+        document.querySelector('meta[property="og:description"]').content = document.querySelector('meta[name="description"]').content;
+        document.querySelector('meta[property="og:locale"]').content = lang === 'en' ? 'en_US' : 'pt_BR';
+        document.querySelector('meta[property="og:url"]').content = `${location.origin}${location.pathname}?lang=${lang}`;
       }
 
       function setFontSize(scale) {
@@ -53,7 +93,10 @@
       }
 
       // Will apply zoom after DOM is ready (main element required)
-      const savedLang = localStorage.getItem('preferred-lang') || (navigator.language.startsWith('en') ? 'en' : 'pt');
+      const requestedLang = new URLSearchParams(location.search).get('lang');
+      const savedLang = ['pt', 'en'].includes(requestedLang)
+        ? requestedLang
+        : localStorage.getItem('preferred-lang') || (navigator.language.startsWith('en') ? 'en' : 'pt');
       document.documentElement.setAttribute('lang', savedLang);
 
       const savedTheme =
@@ -171,6 +214,12 @@
         </div>
       </header>
 
+      <div class="resume-downloads no-print" aria-label="Downloads do currículo">
+        <strong><span class="lang-pt">Baixar currículo:</span><span class="lang-en">Download résumé:</span></strong>
+        <a href="curriculo-moises-filho-pt.pdf" download="Moises-Filho-Curriculo-PT.pdf">PDF · PT</a>
+        <a href="curriculo-moises-filho-en.pdf" download="Moises-Filho-Resume-EN.pdf">PDF · EN</a>
+      </div>
+
       <!-- Resumo Profissional -->
       <section id="resumo">
         <h2>
@@ -178,33 +227,18 @@
           <span class="lang-en">Professional Summary</span>
         </h2>
         <p class="lang-pt">
-          Líder técnico e gestor de tecnologia com mais de 19 anos de experiência, sendo 15 anos em liderança de
-          equipes, desenvolvimento de software e arquitetura. Experiência recente na criação e manutenção de agentes de
-          IA para desenvolvimento de software, utilizando GitHub Copilot, OpenCode e modelos da OpenAI, como GPT.
-          Atuação na governança do ciclo de vida completo de aplicações, do planejamento e desenvolvimento aos testes,
-          revisão, segurança, build, deploy e operação. Experiência na definição de quality gates para qualidade de
-          código e segurança, além da estruturação de processos de Pull Requests com templates e validações obrigatórias
-          integradas ao CI/CD. Atuação hands-on em decisões arquiteturais, desenvolvimento web, integração entre
-          sistemas e construção de soluções escaláveis e resilientes, com Java/Spring Boot, Node.js/NestJS, C#/.NET,
-          Angular, RabbitMQ, Azure Service Bus, Redis, Azure, AWS, GCP e Kubernetes. Histórico de melhoria contínua de
-           práticas de engenharia, prevenção de bugs e evolução da cobertura de testes automatizados e de integração.
-           Resultados incluem reduções superiores a 50% no tempo de deploy e nos custos de infraestrutura, processamento
-           fiscal reduzido em mais de 50%, com falhas próximas de zero, e entrega quase instantânea e sem perdas de resultados
-           de saúde em canais web e mobile.
+          Arquiteto de software e líder técnico com mais de 19 anos de experiência, sendo 15 em liderança. Conecto
+          estratégia, arquitetura e execução para evoluir sistemas críticos, desenvolver equipes e melhorar a
+          confiabilidade da entrega. Resultados incluem reduções superiores a 50% no tempo de deploy e nos custos de
+          infraestrutura, processamento fiscal reduzido em mais de 50% com falhas próximas de zero e entrega quase
+          instantânea e sem perdas de resultados de saúde em canais web e mobile.
         </p>
         <p class="lang-en">
-          Technical leader and technology manager with over 19 years of experience, including 15 years leading teams,
-          developing software, and designing architectures. Recent experience creating and maintaining AI agents for
-          software development using GitHub Copilot, OpenCode, and OpenAI models such as GPT. Experience governing the
-          complete application lifecycle, from planning and development through testing, review, security, build,
-          deployment, and operations. Skilled in defining quality gates for code quality and security, as well as
-          structuring Pull Request processes with templates and mandatory CI/CD validations. Hands-on experience with
-          architectural decisions, web development, system integration, and scalable and resilient solutions using
-          Java/Spring Boot, Node.js/NestJS, C#/.NET, Angular, RabbitMQ, Azure Service Bus, Redis, Azure, AWS, GCP, and
-          Kubernetes. Track record of continuously improving engineering practices, preventing bugs, and increasing
-           automated and integration test coverage. Outcomes include over 50% reductions in deployment time and
-           infrastructure costs, over 50% less tax-processing time with near-zero failures, and near-instant, loss-free
-           delivery of healthcare results through web and mobile channels.
+          Software architect and technical leader with 19+ years of experience, including 15 in leadership. I connect
+          strategy, architecture, and execution to evolve mission-critical systems, grow engineering teams, and improve
+          delivery reliability. Outcomes include over 50% reductions in deployment time and infrastructure costs, over
+          50% less tax-processing time with near-zero failures, and near-instant, loss-free delivery of healthcare
+          results through web and mobile channels.
         </p>
       </section>
 
@@ -216,7 +250,7 @@
         </h2>
         <div class="skill-row">
           <span class="skill-label"><span class="lang-pt">Arquitetura &amp; Sistemas Distribuídos</span><span class="lang-en">Architecture &amp; Distributed Systems</span></span>
-          <span class="skill-value">Microservices · Event-Driven · CQRS · RabbitMQ · Azure Service Bus · Redis · REST/SOAP</span>
+          <span class="skill-value"><span class="lang-pt">Microsserviços · Event-Driven · CQRS · RabbitMQ · Azure Service Bus · Redis · REST/SOAP</span><span class="lang-en">Microservices · Event-Driven · CQRS · RabbitMQ · Azure Service Bus · Redis · REST/SOAP</span></span>
         </div>
         <div class="skill-row">
           <span class="skill-label"><span class="lang-pt">Liderança &amp; Engenharia</span><span class="lang-en">Leadership &amp; Engineering</span></span>
@@ -224,7 +258,7 @@
         </div>
         <div class="skill-row">
           <span class="skill-label">Cloud, DevOps &amp; SRE</span>
-          <span class="skill-value">Azure · AWS · GCP · Kubernetes · OpenShift · Helm · Terraform · Docker · GitHub Actions · Jenkins · SLIs/SLOs · Observability · FinOps</span>
+          <span class="skill-value"><span class="lang-pt">Azure · AWS · GCP · Kubernetes · OpenShift · Helm · Terraform · Docker · GitHub Actions · Jenkins · SLIs/SLOs · Observabilidade · FinOps</span><span class="lang-en">Azure · AWS · GCP · Kubernetes · OpenShift · Helm · Terraform · Docker · GitHub Actions · Jenkins · SLIs/SLOs · Observability · FinOps</span></span>
         </div>
         <div class="skill-row">
           <span class="skill-label"><span class="lang-pt">IA Aplicada ao Desenvolvimento</span><span class="lang-en">AI-Assisted Development</span></span>
@@ -505,12 +539,16 @@
           </div>
           <p style="text-align: justify; margin-top: 0.3rem; color: var(--color-text-muted)">
             <span class="lang-pt"
-              >Prova de conceito de sistema operacional para o M5Stack Tab5, baseado em ESP32-P4, com teclado virtual em
-              LVGL, rotação orientada por IMU, barra superior com relógio RTC e temas claro e escuro.</span
+              >Prova de conceito em evolução para o M5Stack Tab5 (ESP32-P4). Entre os recursos já implementados estão
+              isolamento de aplicações WebAssembly pelo runtime WAMR, Host ABI com acesso controlado à interface e ao
+              hardware, armazenamento isolado por app, gerenciador de pacotes .tab5pkg e SDK para criar aplicações em
+              C/C++ e WebAssembly. Também inclui interface LVGL, rotação por IMU e temas claro e escuro.</span
             >
             <span class="lang-en"
-              >Proof of concept for an operating system for the M5Stack Tab5, based on ESP32-P4, featuring an LVGL
-              virtual keyboard, IMU-based rotation, a top bar with an RTC clock, and light and dark themes.</span
+              >An evolving proof of concept for M5Stack Tab5 (ESP32-P4). Implemented features include WebAssembly app
+              isolation through the WAMR runtime, a Host ABI with controlled access to the UI and hardware, per-app
+              isolated storage, a .tab5pkg package manager, and an SDK for C/C++ and WebAssembly apps. It also includes
+              an LVGL interface, IMU-based rotation, and light and dark themes.</span
             >
           </p>
         </article>
@@ -700,14 +738,12 @@
         const savedFont = localStorage.getItem('font-scale') || '100';
         document.querySelector('main').style.zoom = savedFont + '%';
         const activeLang = document.documentElement.getAttribute('lang') || 'pt';
+        setLanguage(activeLang);
         document.querySelectorAll('.lang-btn').forEach((btn) => {
           const isActive = btn.getAttribute('data-lang') === activeLang;
           btn.classList.toggle('active', isActive);
           btn.setAttribute('aria-pressed', isActive);
         });
-        const titlePt = 'Moisés Filho - Curriculum';
-        const titleEn = 'Moisés Filho - Curriculum';
-        document.title = activeLang === 'pt' ? titlePt : titleEn;
       });
     </script>
   </body>

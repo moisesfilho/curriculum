@@ -118,6 +118,7 @@ h1 em { color: var(--accent); font-style: normal; }
 .site-footer p { margin: 0; }
 .site-footer > a:last-child { color: var(--text); font-weight: 700; }
 .lang-en { display: none; }
+[hidden] { display: none !important; }
 [lang='en'] .lang-pt { display: none !important; }
 [lang='en'] .lang-en { display: initial; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
